@@ -1,7 +1,7 @@
 # Abroad Pass
 Mobile App for studying abroad.
 
-## Techniques Stack
+## Technical Stack
 
 Frontend
  - Ionic (web mobile app for android and ios)
