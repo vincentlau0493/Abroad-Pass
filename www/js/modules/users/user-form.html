@@ -1,0 +1,69 @@
+<ion-view view-title="{{formMode}}" ng-init="formMode = 'Sign In'">
+	<ion-content>
+		<div class="animate-switch-container"
+	    ng-switch on="formMode">
+	      <div ng-switch-when="Sign In">
+	      	<ng-include src="'sign-in.html'"></ng-include>
+	      </div>
+	      <div ng-switch-when="Sign Up">
+	      	<ng-include src="'sign-up.html'"></ng-include>
+	      </div>
+	  </div>
+	</ion-content>
+	<a href="#/tab/dash" class="bar bar-footer bar-calm">
+	  <div class="title">Try It Now</div>
+	</a>
+</ion-view>
+
+
+
+
+<!-- sign-in.html template -->
+<script type="text/ng-template" id="sign-in.html">
+		<div class="list">
+		<label class="item item-input">
+			<span class="input-label">Username</span>
+			<input type="text" ng-model="user.username">
+		</label>
+		<label class="item item-input">
+			<span class="input-label">Password</span>
+			<input type="password" ng-model="user.password">
+		</label>
+	</div>
+	<div class="padding">
+		<button class="button button-block button-positive" ng-click="signIn(user)">
+			{{formMode}}
+		</button>
+		<p class="text-center">
+			<a href="#/forgot-password">Forgot password</a>
+			&nbsp;&nbsp;|&nbsp;&nbsp; 
+			<a href="" ng-click="changeMode('Sign Up')">Register now</a>
+		</p>
+	</div>
+</script>
+
+<!-- sign-up.html template -->
+<script type="text/ng-template" id="sign-up.html">
+		<div class="list">
+		<label class="item item-input">
+			<span class="input-label">Username</span>
+			<input type="text" ng-model="user.username">
+		</label>
+		<label class="item item-input">
+			<span class="input-label">Password</span>
+			<input type="password" ng-model="user.password">
+		</label>
+		<label class="item item-input">
+			<span class="input-label">Confirm Password</span>
+			<input type="password" ng-model="user.passwordConfirm">
+		</label>
+	</div>
+	<div class="padding">
+		<button class="button button-block button-positive" ng-click="signUp(user)">
+			{{formMode}}
+		</button>
+		<p class="text-center">
+		<a href="" ng-click="changeMode('Sign In')">Already register?</a>
+		</p>
+	</div>
+</script>

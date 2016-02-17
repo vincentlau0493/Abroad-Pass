@@ -8,6 +8,14 @@ function Router($stateProvider, $urlRouterProvider) {
   // Each state's controller can be found in controllers.js
   $stateProvider
 
+
+  .state('signin', {
+    url: '/user-form',
+    templateUrl: templatePath + 'users/user-form.html',
+    controller: 'UsersCtrl'     
+  })
+
+
   // setup an abstract state for the tabs directive
     .state('tab', {
     url: '/tab',
@@ -16,7 +24,6 @@ function Router($stateProvider, $urlRouterProvider) {
   })
 
   // Each tab has its own nav history stack:
-
   .state('tab.dash', {
     url: '/dash',
     views: {
@@ -56,7 +63,7 @@ function Router($stateProvider, $urlRouterProvider) {
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/user-form');
 
 }
 

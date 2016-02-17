@@ -5,6 +5,7 @@ var router = require('./router');
 // -----------------------------------
 // Execute Modules
 // -----------------------------------
+require('./modules/users/users');
 require('./modules/account/account');
 require('./modules/chats/chats');
 
@@ -18,6 +19,7 @@ require('./modules/chats/chats');
 angular.module('starter', [
   'ionic', 
   'account', 
+  'users', 
   'chats'])
 
 .run(function($ionicPlatform) {
