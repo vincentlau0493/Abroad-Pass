@@ -1,13 +1,13 @@
 <ion-view view-title="{{formMode}}" ng-init="formMode = 'Sign In'">
 	<ion-content>
-		<div class="animate-switch-container"
-	    ng-switch on="formMode">
-	      <div ng-switch-when="Sign In">
-	      	<ng-include src="'sign-in.html'"></ng-include>
-	      </div>
-	      <div ng-switch-when="Sign Up">
-	      	<ng-include src="'sign-up.html'"></ng-include>
-	      </div>
+		<div class="animation-switch-container"
+    	ng-switch on="formMode">
+      <div class="fade" ng-switch-when="Sign In">
+      	<ng-include src="'sign-in.html'"></ng-include>
+      </div>
+      <div class="fade" ng-switch-when="Sign Up">
+      	<ng-include src="'sign-up.html'"></ng-include>
+      </div>
 	  </div>
 	</ion-content>
 	<a href="#/tab/dash" class="bar bar-footer bar-calm">

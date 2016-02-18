@@ -20,7 +20,7 @@ angular.module('starter', [
   'ionic', 
   'account', 
   'users', 
-  'chats'])
+  'chats',])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
