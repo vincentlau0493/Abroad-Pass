@@ -9,7 +9,8 @@ var sh = require('shelljs');
 // Additional plugins
 var browserify = require('browserify');
 var vinylSource = require('vinyl-source-stream');
-
+var plumber = require('gulp-plumber');
+var compass = require('gulp-compass');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
@@ -19,20 +20,28 @@ var paths = {
   bundleSrc: ['./www/js/dist/bundle.js']
 };
 
+var source = {
+  style: {
+    css: './www/css',
+    sass: './scss',
+    image: './www/img'
+  }
+}
+
 
 //------------------------------------
 // DEFAULT
 //------------------------------------
-gulp.task('default', ['watch']);
+gulp.task('default', ['sass', 'compass', 'browserify', 'watch']);
 
 
 //------------------------------------
-// SASS
+// SASS (Only for generating ionic.app.scss)
 //------------------------------------
 gulp.task('sass', function(done) {
-  gulp.src('./scss/*.scss')
+  gulp.src('./scss/ionic.app.scss')
+    .pipe(plumber())
     .pipe(sass())
-    .on('error', sass.logError)
     .pipe(gulp.dest('./www/css/'))
     .pipe(minifyCss({
       keepSpecialComments: 0
@@ -44,10 +53,28 @@ gulp.task('sass', function(done) {
 
 
 //------------------------------------
-// SASS
+// COMPASS
+//------------------------------------
+gulp.task('compass', function(done) {
+  gulp.src(['./scss/*.scss', '!./scss/ionic.app.scss'])
+    .pipe(plumber())
+    .pipe(compass(source.style))
+    .pipe(gulp.dest('./www/css/'))
+    .pipe(minifyCss({
+      keepSpecialComments: 0
+    }))
+    .pipe(rename({ extname: '.min.css' }))
+    .pipe(gulp.dest('./www/css/'))
+    .on('end', done);
+});
+
+
+//------------------------------------
+// BROWSERIFY
 //------------------------------------
 gulp.task('browserify', function() {
   return browserify('./www/js/app.js', {debug: true})
+    .on('error', gutil.log)
     .bundle()
     .pipe(vinylSource('bundle.js'))
     .pipe(gulp.dest('./www/dist'));
@@ -58,7 +85,7 @@ gulp.task('browserify', function() {
 // WATCH
 //------------------------------------
 gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['sass']);
+  gulp.watch(paths.sass, ['compass']);
   gulp.watch(paths.jsSrc, ['browserify']);
 });
 

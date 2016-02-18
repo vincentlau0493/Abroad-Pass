@@ -1,5 +1,6 @@
-<ion-view view-title="{{formMode}}" ng-init="formMode = 'Sign In'">
-	<ion-content>
+<ion-view view-title="{{formMode}}" 
+	hide-nav-bar="false" ng-init="formMode = 'Sign In'">
+	<ion-content scroll="false">
 		<div class="animation-switch-container"
     	ng-switch on="formMode">
       <div class="fade" ng-switch-when="Sign In">
@@ -20,7 +21,7 @@
 
 <!-- sign-in.html template -->
 <script type="text/ng-template" id="sign-in.html">
-		<div class="list">
+	<div class="list list-inset">
 		<label class="item item-input">
 			<span class="input-label">Username</span>
 			<input type="text" ng-model="user.username">
