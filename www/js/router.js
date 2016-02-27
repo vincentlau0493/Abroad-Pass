@@ -24,12 +24,13 @@ function Router($stateProvider, $urlRouterProvider) {
   })
 
   // Each tab has its own nav history stack:
-  .state('tab.dash', {
-    url: '/dash',
+  .state('tab.home', {
+    url: '/home',
     views: {
-      'tab-dash': {
-        templateUrl: templatePath + 'dash/tab-dash.html',
-      }
+      'tab-home': {
+        templateUrl: templatePath + 'home/tab-home.html',
+        controller: 'HomeCtrl'
+      },
     }
   })
 

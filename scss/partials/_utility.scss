@@ -1,0 +1,13 @@
+// Mostly about override ionic default style
+.item-avatar.item-avatar-shrink {
+	min-height: 0px;
+	padding-bottom: 8px;
+	padding-top: 8px;
+
+	p {
+		font-size: 85%;
+	}
+	img {
+		top: 8px;
+	}
+}

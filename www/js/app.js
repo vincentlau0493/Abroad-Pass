@@ -6,6 +6,8 @@ var router = require('./router');
 // Execute Modules
 // -----------------------------------
 require('./modules/users/users');
+require('./modules/articles/articles');
+require('./modules/home/home');
 require('./modules/account/account');
 require('./modules/chats/chats');
 
@@ -18,6 +20,8 @@ require('./modules/chats/chats');
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', [
   'ionic', 
+  'home',
+  'articles',
   'account', 
   'users', 
   'chats',])

@@ -1,0 +1,32 @@
+<article class="list card">
+  <div class="item item-avatar item-avatar-shrink" ion-affix data-affix-within-parent-with-class="card">
+    <img ng-src="{{article.provider.avatar}}">
+    <h2>{{article.provider.name}}</h2>
+    <p>{{article.provider.lastText}}</p>
+  </div>
+
+  <div class="item item-body">
+    <img class="full-image" src="http://www.aliok.com.tr/post-assets/code/img/delorean.jpg">
+
+    <p>{{article.content}}</p>
+
+    <p>
+      <a href="#" class="subdued">1 Like</a>
+      <a href="#" class="subdued">5 Comments</a>
+    </p>
+  </div>
+  <div class="item tabs tabs-secondary tabs-icon-left">
+    <a class="tab-item" href="#">
+      <i class="icon ion-thumbsup"></i>
+      Like
+    </a>
+    <a class="tab-item" href="#">
+      <i class="icon ion-chatbox"></i>
+      Comment
+    </a>
+    <a class="tab-item" href="#">
+      <i class="icon ion-share"></i>
+      Share
+    </a>
+  </div>
+</article>

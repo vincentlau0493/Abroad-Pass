@@ -1,22 +1,20 @@
-<ion-view view-title="{{formMode}}" 
-	hide-nav-bar="false" ng-init="formMode = 'Sign In'">
+<ion-view view-title="留洋通" 
+	hide-nav-bar="false" ng-init="formMode = 'SIGN_IN'">
 	<ion-content scroll="false">
 		<div class="animation-switch-container"
     	ng-switch on="formMode">
-      <div class="fade" ng-switch-when="Sign In">
+      <div class="fade" ng-switch-when="SIGN_IN">
       	<ng-include src="'sign-in.html'"></ng-include>
       </div>
-      <div class="fade" ng-switch-when="Sign Up">
+      <div class="fade" ng-switch-when="SIGN_UP">
       	<ng-include src="'sign-up.html'"></ng-include>
       </div>
 	  </div>
 	</ion-content>
-	<a href="#/tab/dash" class="bar bar-footer bar-calm">
+	<a href="#/tab/home" class="bar bar-footer bar-calm">
 	  <div class="title">Try It Now</div>
 	</a>
 </ion-view>
-
-
 
 
 <!-- sign-in.html template -->
@@ -33,15 +31,16 @@
 	</div>
 	<div class="padding">
 		<button class="button button-block button-positive" ng-click="signIn(user)">
-			{{formMode}}
+			Sign In
 		</button>
 		<p class="text-center">
 			<a href="#/forgot-password">Forgot password</a>
 			&nbsp;&nbsp;|&nbsp;&nbsp; 
-			<a href="" ng-click="changeMode('Sign Up')">Register now</a>
+			<a href="" ng-click="changeMode('SIGN_UP')">Register now</a>
 		</p>
 	</div>
 </script>
+
 
 <!-- sign-up.html template -->
 <script type="text/ng-template" id="sign-up.html">
@@ -61,10 +60,10 @@
 	</div>
 	<div class="padding">
 		<button class="button button-block button-positive" ng-click="signUp(user)">
-			{{formMode}}
+			Sign Up
 		</button>
 		<p class="text-center">
-		<a href="" ng-click="changeMode('Sign In')">Already register?</a>
+		<a href="" ng-click="changeMode('SIGN_IN')">Already register?</a>
 		</p>
 	</div>
 </script>
