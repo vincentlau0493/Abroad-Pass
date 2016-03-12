@@ -5,11 +5,15 @@ var router = require('./router');
 // -----------------------------------
 // Execute Modules
 // -----------------------------------
-require('./modules/users/users');
-require('./modules/articles/articles');
-require('./modules/home/home');
+
 require('./modules/account/account');
+require('./modules/articles/articles'); // service
 require('./modules/chats/chats');
+require('./modules/home/home');
+require('./modules/providers/providers'); // service
+require('./modules/users/users');
+
+
 
 // Ionic Starter App
 
@@ -20,11 +24,13 @@ require('./modules/chats/chats');
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', [
   'ionic', 
-  'home',
+  'account',
   'articles',
-  'account', 
+  'chats',
+  'home',
+  'providers',
   'users', 
-  'chats',])
+  ,])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

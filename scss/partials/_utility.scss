@@ -11,3 +11,53 @@
 		top: 8px;
 	}
 }
+
+ng-include .list:last-child.card { // solve ng-include style bug
+	margin-bottom: 20px;
+}
+
+.list.provider-card {
+	.item-avatar img {
+		@include border-radius(0px);
+	}
+}
+
+.translate-tabs {
+	opacity: 0.9; 
+	transform: translate3d(-33%, 0px, 0px);
+}
+
+
+// ------------------------
+// Background Effects
+// ------------------------
+.full-bg {
+	background-position: center center !important;
+	background-size: cover !important;
+}
+
+.blur-bg {
+  -webkit-filter: blur(4px);
+  -moz-filter: blur(4px);
+  -o-filter: blur(4px);
+  -ms-filter: blur(4px);
+  filter: blur(4px);
+}
+
+.scroll-div {
+	overflow-x: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+
+.card {
+	// @include border-radius(8px);
+	@include box-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+}
+
+
+.sticky-footer {
+	padding: 0;
+	.button {
+		margin: 0;
+	}
+}

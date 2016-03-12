@@ -1,0 +1,63 @@
+<ion-view view-title="{{provider.name}}" hide-nav-bar="false" hide-tabs>
+	<ion-header-bar class="bar-energized">
+	  <div class="buttons">
+	    <button class="button icon ion-ios-arrow-back" ng-click="$ionicGoBack()"></button>
+	  </div>
+	  <h1 class="title">{{provider.name}}</h1>
+	  <div class="buttons">
+	    <button class="button button-clear icon ion-star"></button>
+	  </div>
+	</ion-header-bar>
+
+  <ion-content class="profile-container" scroll="true">
+    <div class="profile-highlight">
+    	<div class="profile-banner full-bg blur-bg" style="background: linear-gradient(0deg, rgba(2,173,231,0.5), rgba(2,173,231,0.5)), url('{{provider.avatar}}')"></div>
+    	<div class="profile-info">
+    		<img class="profile-avatar" src="{{provider.avatar}}">
+    		<h3 class="profile-name">{{provider.name}}</h3>
+    		<p class="profile-about">{{provider.lastText}}</p>
+    		<button class="button icon-left ion-calendar button-energized button-outline profile-btn"
+    			ng-click="$ionicGoBack()">Ask For Application</button>
+    	</div><!-- info -->
+    </div><!-- highlight -->
+
+		
+		<article class="list card section">
+			<h2 class="item item-divider">Basic Info</h2>
+		  <div class="item item-text-wrap">
+		  	<h2>Title here</h2>
+		    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos ut eveniet minus quo eligendi, atque maxime officia, explicabo architecto non magnam repellendus optio quae est repudiandae tenetur praesentium amet, ipsa.</p>
+		  </div>
+		  <div class="item item-divider item-energized">
+		    See More Detail
+		  </div>
+		</article>
+
+		<article class="list card section">
+			<h2 class="item item-divider">About Provider</h2>
+		  <div class="item item-text-wrap">
+		  	<h2>Title here</h2>
+		    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos ut eveniet minus quo eligendi, atque maxime officia, explicabo architecto non magnam repellendus optio quae est repudiandae tenetur praesentium amet, ipsa.</p>
+		  </div>
+		  <div class="item item-divider item-energized">
+		    See More Detail
+		  </div>
+		</article>
+
+		<article class="list card section">
+			<h2 class="item item-divider">Other Comments</h2>
+		  <div class="item item-text-wrap">
+		  	<h2>Title here</h2>
+		    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos ut eveniet minus quo eligendi, atque maxime officia, explicabo architecto non magnam repellendus optio quae est repudiandae tenetur praesentium amet, ipsa.</p>
+		  </div>
+		  <div class="item item-divider item-energized">
+		    See More Detail
+		  </div>
+		</article>
+
+  </ion-content><!-- container -->
+
+  <ion-footer-bar class="sticky-footer">
+		<button  class="button button-full button-positive">Chat With Me</button>
+	</ion-footer-bar>
+</ion-view>

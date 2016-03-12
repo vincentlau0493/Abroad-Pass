@@ -14,19 +14,19 @@ function ArticlesService() {
 	}, {
 		id: 1,
 		provider: {
-	    id: 1,
-	    name: 'Max Lynx',
-	    lastText: 'Hey, it\'s me',
-	    avatar: 'img/max.png'
+		    id: 1,
+		    name: 'Max Lynx',
+		    lastText: 'Hey, it\'s me',
+		    avatar: 'img/max.png'
 		},
 		content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod vero labore ullam asperiores pariatur deserunt quam necessitatibus delectus, quae accusantium qui. Voluptatum vitae impedit, dolorem ipsam aperiam minus aspernatur natus!'		
 	}, {
 		id: 2,
 		provider: {
-	    id: 2,
-	    name: 'Adam Bradleyson',
-	    lastText: 'I should buy a boat',
-	    avatar: 'img/adam.jpg'
+		    id: 2,
+		    name: 'Adam Bradleyson',
+		    lastText: 'I should buy a boat',
+		    avatar: 'img/adam.jpg'
 		},
 		content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod vero labore ullam asperiores pariatur deserunt quam necessitatibus delectus, quae accusantium qui. Voluptatum vitae impedit, dolorem ipsam aperiam minus aspernatur natus!'					
 	}];

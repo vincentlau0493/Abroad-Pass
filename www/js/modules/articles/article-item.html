@@ -1,8 +1,11 @@
 <article class="list card">
-  <div class="item item-avatar item-avatar-shrink" ion-affix data-affix-within-parent-with-class="card">
-    <img ng-src="{{article.provider.avatar}}">
+  <div class="item item-avatar item-avatar-shrink item-icon-right" ion-affix data-affix-within-parent-with-class="list">
+    <a href="#/tab/{{urlPrefix}}/providers/{{article.provider.id}}"> 
+      <img class="item-image" ng-src="{{article.provider.avatar}}">
+    </a>
     <h2>{{article.provider.name}}</h2>
     <p>{{article.provider.lastText}}</p>
+    <i class="icon ion-ios-plus-outline" ng-click="showActionSheet($event)"></i>
   </div>
 
   <div class="item item-body">
