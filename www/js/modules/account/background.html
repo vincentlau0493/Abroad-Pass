@@ -1,0 +1,102 @@
+<ion-view view-title="" hide-nav-bar="false">
+	<ion-header-bar class="bar-energized">
+	  <div class="buttons">
+	    <button class="button icon ion-ios-arrow-back" ng-click="$ionicGoBack()"></button>
+	  </div>
+	  <h1 class="title">背景资料</h1>
+	</ion-header-bar>
+
+  <ion-content class="profile-container" scroll="true">
+  	<div class="list">
+  		<!-- language grades -->
+			<a class="item item-icon-right" ng-click="openGradeModal('toefl')">
+				TOEFL
+				<span class="item-note">
+		      {{account.grades.toefl == null ? "未填写" : account.grades.toefl.total}}
+		    </span>
+				<i class="icon ion-ios-arrow-right"></i>
+			</a>
+
+			<a class="item item-icon-right" ng-click="openGradeModal('ielts')">
+				IELTS
+				<span class="item-note">
+		      {{account.grades.ielts == null ? "未填写" : account.grades.ielts.total}}
+		    </span>
+				<i class="icon ion-ios-arrow-right"></i>
+			</a>
+
+			<a class="item item-icon-right" ng-click="openGradeModal('gre')">
+				GRE
+				<span class="item-note">
+		      {{account.grades.gre == null ? "未填写" : account.grades.gre.total}}
+		    </span>
+				<i class="icon ion-ios-arrow-right"></i>
+			</a>
+
+			<a class="item item-icon-right" ng-click="openGradeModal('gmat')">
+				GMAT
+				<span class="item-note">
+		      {{account.grades.gmat == null ? "未填写" : account.grades.gmat.total}}
+		    </span>
+				<i class="icon ion-ios-arrow-right"></i>
+			</a>
+
+			<a class="item item-icon-right" ng-click="openGradeModal('gpa')">
+				GPA
+				<span class="item-note">
+		      {{account.grades.gpa == null ? "未填写" : account.grades.gpa}}
+		    </span>
+				<i class="icon ion-ios-arrow-right"></i>
+			</a>
+			<!-- language grades end -->
+			
+			<div class="item item-divider">
+			</div>	
+
+			<a class="item item-icon-right" ng-click="openSchoolModal('university')">
+				学校
+				<span class="item-note">
+		      {{account.school.university == null ? "未填写" : account.school.university}}
+		    </span>
+				<i class="icon ion-ios-arrow-right"></i>
+			</a>
+
+			<a class="item item-icon-right" ng-click="openSchoolModal('category')">
+				专业分类
+				<span class="item-note">
+		      {{account.school.category == null ? "未填写" : account.school.category}}
+		    </span>
+				<i class="icon ion-ios-arrow-right"></i>
+			</a>
+
+			<a class="item item-icon-right" ng-click="openSchoolModal('major')">
+				专业
+				<span class="item-note">
+		      {{account.school.major == null ? "未填写" : account.school.major}}
+		    </span>
+				<i class="icon ion-ios-arrow-right"></i>
+			</a>
+    </div>
+  </ion-content><!-- container -->
+
+</ion-view>
+
+
+<script id="templates/grade-modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-energized">
+      <h1 class="title">{{gradeModalType.en | uppercase}}</h1>
+      <button class="button button-clear button-primary" ng-click="closeGradeModal()">取消</button>
+    </ion-header-bar>
+    <ion-content class="padding">
+      <div class="list">
+
+        <label class="item item-input" ng-repeat="part in gradeModalType.parts">
+          <span class="input-label">{{part.cn}}</span>
+          <input ng-model="gradeModalType.scores[part.en]" type="text">
+        </label>
+        <button class="button button-full button-positive" ng-click="updateScores()">确定</button>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>

@@ -73,9 +73,18 @@ function Router($stateProvider, $urlRouterProvider) {
       'tab-applications': {
         templateUrl: templatePath + 'applications/tab-applications.html',
         // controller: 'ChatsCtrl'
+      },
+      'view1@tab.applications': {
+        template: 'view 1',
+        // controller: 'ChatsCtrl'
+      },
+      'view2@tab.applications': {
+        template: 'view 2',
+        // controller: 'ChatsCtrl'
       }
     }
   })
+
   .state('tab.applications-provider-profile', {
     url: '/applications/providers/:providerId',
     views: {
@@ -92,6 +101,15 @@ function Router($stateProvider, $urlRouterProvider) {
     views: {
       'tab-account': {
         templateUrl: templatePath + 'account/tab-account.html',
+        controller: 'AccountCtrl'
+      }
+    }
+  })
+  .state('tab.background', {
+    url: '/account/background',
+    views: {
+      'tab-account': {
+        templateUrl: templatePath + 'account/background.html',
         controller: 'AccountCtrl'
       }
     }

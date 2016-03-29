@@ -16,7 +16,6 @@ function ProviderDetailCtrl($scope, $stateParams, ionicHistory, ProvidersService
   	ionicHistory.goBack();
   }
 
-
   $scope.$on('$ionicView.afterEnter', function(e) {
 		init();
   });
