@@ -10,6 +10,7 @@ function ArticlesService() {
 			lastText: 'You on your way?',
 			avatar: 'img/ben.png'
 		},
+		title: '最受国际生喜欢的8所美国大学',
 		content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod vero labore ullam asperiores pariatur deserunt quam necessitatibus delectus, quae accusantium qui. Voluptatum vitae impedit, dolorem ipsam aperiam minus aspernatur natus!'
 	}, {
 		id: 1,
@@ -19,6 +20,7 @@ function ArticlesService() {
 		    lastText: 'Hey, it\'s me',
 		    avatar: 'img/max.png'
 		},
+		title: '最受国际生喜欢的9所美国大学',
 		content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod vero labore ullam asperiores pariatur deserunt quam necessitatibus delectus, quae accusantium qui. Voluptatum vitae impedit, dolorem ipsam aperiam minus aspernatur natus!'		
 	}, {
 		id: 2,
@@ -28,6 +30,7 @@ function ArticlesService() {
 		    lastText: 'I should buy a boat',
 		    avatar: 'img/adam.jpg'
 		},
+		title: '最受国际生喜欢的10所美国大学',
 		content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod vero labore ullam asperiores pariatur deserunt quam necessitatibus delectus, quae accusantium qui. Voluptatum vitae impedit, dolorem ipsam aperiam minus aspernatur natus!'					
 	}];
 

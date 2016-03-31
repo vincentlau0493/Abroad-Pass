@@ -1,4 +1,4 @@
-function Account() {
+function Account($http, $q) {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
@@ -70,6 +70,10 @@ function Account() {
     },
     getGradeMap: function() {
     	return gradeMap;
+    },
+    getGradeMapAsync:function() {
+    	return $http.get('/data/grade_map.json')
+    		.then(function(result) {return result.data;});
     }
   };
 }

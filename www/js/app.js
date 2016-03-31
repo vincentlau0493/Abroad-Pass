@@ -13,6 +13,10 @@ require('./modules/home/home');
 require('./modules/providers/providers'); // service
 require('./modules/users/users');
 
+// -----------------------------------
+// Execute Directives
+// -----------------------------------
+require('./directives/directives');
 
 
 // Ionic Starter App
@@ -30,6 +34,7 @@ angular.module('starter', [
   'home',
   'providers',
   'users', 
+  'directives',
   ,])
 
 .run(function($ionicPlatform) {

@@ -16,18 +16,16 @@ function ProviderDetailCtrl($scope, $stateParams, ionicHistory, ProvidersService
   	ionicHistory.goBack();
   }
 
-  $scope.$on('$ionicView.afterEnter', function(e) {
-		init();
-  });
+  // $scope.$on('$ionicView.afterEnter', function(e) {
+		// init();
+  // });
 
 }
 
-function init() {
-	var scrollDiv = document.getElementsByClassName('scroll-div')[0];
-	setScrollDivHeight(scrollDiv);		
-
-
-}
+// function init() {
+// 	var scrollDiv = document.getElementsByClassName('scroll-div')[0];
+// 	setScrollDivHeight(scrollDiv);		
+// }
 
 function setScrollDivHeight(ele) {
 	var height = (window.innerHeight > 0) ? window.innerHeight : screen.height;

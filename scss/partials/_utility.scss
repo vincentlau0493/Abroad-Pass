@@ -50,8 +50,8 @@ ng-include .list:last-child.card { // solve ng-include style bug
 }
 
 .card {
-	// @include border-radius(8px);
-	@include box-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+	@include box-shadow(0 0px 0px rgba(0, 0, 0, 0.5));
+	margin: 15px 0;
 }
 
 

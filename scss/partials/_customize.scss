@@ -73,3 +73,15 @@ ion-content.scroll-content {
 
 
 
+// ------------------------
+// Mouse Down Highlight
+// ------------------------
+.press-background-highlight.activated {
+	border-color: #ccc;
+	background-color: #D9D9D9;
+}
+
+.press-opacity-highlight.activated {
+	opacity: .6;
+}
+

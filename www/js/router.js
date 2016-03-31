@@ -43,6 +43,15 @@ function Router($stateProvider, $urlRouterProvider) {
       }
     }
   })
+  .state('tab.home-article', {
+    url: '/home/articles/:articleId',
+    views: {
+      'tab-home': {
+        templateUrl: templatePath + 'articles/article-detail.html',
+        controller: 'ArticleDetailCtrl'
+      }
+    }
+  })
 
 
   // Chat

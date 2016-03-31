@@ -1,24 +1,29 @@
-<article class="list card">
+<article class="list card flat-card">
   <div class="item item-avatar item-avatar-shrink item-icon-right" ion-affix data-affix-within-parent-with-class="list">
-    <a href="#/tab/{{urlPrefix}}/providers/{{article.provider.id}}"> 
+    <a href="#/tab/{{urlPrefix}}/providers/{{article.provider.id}}" class="press-opacity-highlight"> 
       <img class="item-image" ng-src="{{article.provider.avatar}}">
     </a>
     <h2>{{article.provider.name}}</h2>
     <p>{{article.provider.lastText}}</p>
-    <i class="icon ion-ios-plus-outline" ng-click="showActionSheet($event)"></i>
+    <i style="cursor:pointer"
+       class="icon ion-ios-plus-outline press-opacity-highlight" 
+       ng-click="showActionSheet($event)"></i>
   </div>
 
-  <div class="item item-body">
-    <img class="full-image" src="http://www.aliok.com.tr/post-assets/code/img/delorean.jpg">
+  <a class="item item-body"
+     href="#/tab/{{urlPrefix}}/articles/{{article.id}}">
+      <!-- <img class="full-image" src="http://www.aliok.com.tr/post-assets/code/img/delorean.jpg"> -->
+      <h2 class="title">{{article.title}}</h2>
+      <p>{{article.content}}</p>
+  </a>
+  <p style="padding:16px 16px 6px 16px;">
+    <a class="subdued">14 小时前</a>
+    <a class="subdued">1 Like</a>
+    <a class="subdued">5 Comments</a>
+  </p>
 
-    <p>{{article.content}}</p>
 
-    <p>
-      <a href="#" class="subdued">1 Like</a>
-      <a href="#" class="subdued">5 Comments</a>
-    </p>
-  </div>
-  <div class="item tabs tabs-secondary tabs-icon-left">
+<!--   <div class="item tabs tabs-secondary tabs-icon-left">
     <a class="tab-item" href="#">
       <i class="icon ion-thumbsup"></i>
       Like
@@ -31,5 +36,5 @@
       <i class="icon ion-share"></i>
       Share
     </a>
-  </div>
+  </div> -->
 </article>

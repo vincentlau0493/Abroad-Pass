@@ -8,7 +8,9 @@ function AccountCtrl($scope, $ionicModal, Account) {
     enableFriends: true
   };
 
-
+  Account.getGradeMapAsync().then(function(data) {
+      console.log(data);
+  });
 
   // modal service
 	$ionicModal.fromTemplateUrl('templates/grade-modal.html', {
