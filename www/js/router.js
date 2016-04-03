@@ -8,6 +8,12 @@ function Router($stateProvider, $urlRouterProvider) {
   // Each state's controller can be found in controllers.js
   $stateProvider
 
+  .state('landing', {
+    url: '/landing-page',
+    templateUrl: templatePath + 'landing/landing-page.html',
+    controller: 'UsersCtrl'     
+  }) 
+
 
   .state('signin', {
     url: '/user-form',
@@ -32,7 +38,10 @@ function Router($stateProvider, $urlRouterProvider) {
         templateUrl: templatePath + 'home/tab-home.html',
         controller: 'HomeCtrl'
       },
-    }
+    },
+    // onEnter: function(LoadingService) {
+    //   LoadingService.show();
+    // }
   })
   .state('tab.home-provider-profile', {
     url: '/home/providers/:providerId',
@@ -50,7 +59,8 @@ function Router($stateProvider, $urlRouterProvider) {
         templateUrl: templatePath + 'articles/article-detail.html',
         controller: 'ArticleDetailCtrl'
       }
-    }
+    },
+    title: 'home'
   })
 
 
@@ -81,7 +91,7 @@ function Router($stateProvider, $urlRouterProvider) {
     views: {
       'tab-applications': {
         templateUrl: templatePath + 'applications/tab-applications.html',
-        // controller: 'ChatsCtrl'
+        controller: 'ApplicationsCtrl'
       },
       'view1@tab.applications': {
         template: 'view 1',
@@ -125,7 +135,7 @@ function Router($stateProvider, $urlRouterProvider) {
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/user-form');
+  $urlRouterProvider.otherwise('/landing-page');
 
 }
 

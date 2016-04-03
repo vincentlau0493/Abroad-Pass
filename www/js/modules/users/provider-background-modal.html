@@ -1,0 +1,50 @@
+<ion-modal-view>
+	<ion-header-bar class="bar bar-header bar-positive">
+		<button class="button icon ion-ios-arrow-back" ng-click="backgroundModal.hide()"></button>
+		<h1 class="title">背景资料</h1>
+	</ion-header-bar>
+	<ion-content style="background: white" class="provider-background-form">
+		<div class="list">
+			<label class="item item-input">
+				<span class="input-label">姓名</span>
+				<input type="text" placeholder="请填写真名">
+			</label>
+			<label class="item item-input">
+				<span class="input-label">邮箱</span>
+				<input type="text" placeholder="可以联系到您的邮箱">
+			</label>
+			<label class="item item-input">
+				<span class="input-label">就读院校</span>
+				<input type="text" placeholder="您所就读的学校">
+			</label>
+			<label class="item item-input item-select">
+				<div class="input-label">
+					就读专业分类
+				</div>
+				<select>
+					<option>语言类</option>
+					<option selected>金融类</option>
+					<option>计算机</option>
+					<option>其它</option>
+				</select>
+			</label>
+			<label class="item item-input">
+				<div class="input-label">
+					专业名称
+				</div>
+				<input type="text" placeholder="您专业的具体名称">
+			</label>
+			<label class="item item-input item-select">
+				<div class="input-label">
+					就读学位
+				</div>
+				<select>
+					<option selected>本科</option>
+					<option>硕士</option>
+					<option>博士</option>
+				</select>
+			</label>
+			<button class="button button-full button-positive" ng-click="signUpForProvider()">确定</button>
+		</div>
+	</ion-content>
+</ion-modal-view>

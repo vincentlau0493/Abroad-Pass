@@ -1,5 +1,6 @@
-function ProviderDetailCtrl($scope, $stateParams, ionicHistory, ProvidersService) {
-  $scope.provider = ProvidersService.get($stateParams.providerId);
+function ProviderDetailCtrl($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, ProvidersService) {
+	var pid = $stateParams.providerId;
+  $scope.provider = ProvidersService.get(pid);
 
   // $ionicConfigProvider.backButton.previousTitleText(false)
   
@@ -16,30 +17,46 @@ function ProviderDetailCtrl($scope, $stateParams, ionicHistory, ProvidersService
   	ionicHistory.goBack();
   }
 
-  // $scope.$on('$ionicView.afterEnter', function(e) {
-		// init();
-  // });
+	$ionicModal.fromTemplateUrl('templates/application-modal.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.applicationModal = modal;
+  });
+
+	$scope.openApplicationModal = function() {		
+    $scope.applicationModal.show();
+  };
+
+  $scope.closeApplicationModal = function() {
+
+  	// confirm or cleanup $scope.gradeModalType.scores
+    $scope.applicationModal.hide();
+    // cleanup
+  };
+
+  $scope.sendOutRequest = function() {
+	  
+		var removeListener = $scope.$on('modal.hidden', function(){
+			popup();
+	    // Remove listener
+	    removeListener();
+		});
+
+		$scope.applicationModal.hide();
+  }
+
+  function popup() {
+	  var myPopup = $ionicPopup.show({
+	    title: '请求已发送，请等待回应',
+	    scope: $scope
+	  });
+	  $timeout(function() {
+	     myPopup.close(); //close the popup after 2 seconds for some reason
+	  }, 2000);  	
+  }
+
 
 }
 
-// function init() {
-// 	var scrollDiv = document.getElementsByClassName('scroll-div')[0];
-// 	setScrollDivHeight(scrollDiv);		
-// }
 
-function setScrollDivHeight(ele) {
-	var height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
-	var contentEles = document.getElementsByClassName('scroll-content');
-	var contentEle = contentEles[contentEles.length - 1];
-	var contentTop = contentEle.offsetTop;
-	var eleTop = ele.offsetTop;
-
-	console.log(height);
-	console.log(eleTop);
-	console.log(contentTop);
-	console.log(height - eleTop- contentTop);
-	ele.style.height = (height - eleTop - contentTop) + 'px';
-}
-
-
-module.exports = ['$scope', '$stateParams', '$ionicHistory', 'ProvidersService', ProviderDetailCtrl];
+module.exports = ['$scope', '$stateParams', '$ionicModal', '$ionicPopup', '$timeout', 'ProvidersService', ProviderDetailCtrl];

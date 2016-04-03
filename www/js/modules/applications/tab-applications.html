@@ -1,22 +1,41 @@
 <ion-view view-title="Applications" hide-nav-bar="true" >
-	<ion-header-bar class="">
+	<ion-header-bar class="bar-light">
 	  <h1 class="title">申请管理</h1>
 	</ion-header-bar>
   <ion-header-bar class="bar-subheader">
-    <div class="button-bar">
-      <div class="button-bar">
-        <a class="button active" tab-state ui-sref="tabs.customer">申请</a>
-        <a class="button" tab-state ui-sref="tabs.appointment">消息</a>
-      </div>
+    <div class="button-bar tab-button-bar">
+      <a class="button active" data-tab-btn="application" ng-click="switchSlide($event)">申请</a>
+      <a class="button" data-tab-btn="notification" ng-click="switchSlide($event)">消息</a>
     </div>
   </ion-header-bar>
-  <ion-content>
-		<a href="#/tab/applications/providers/1">applications</a>
+  <ion-content class="has-slide-box">
+<!-- 		<a href="#/tab/applications/providers/1">applications</a>
 		<div>
         <div ui-view="view1"></div>
     </div>
     <div>
         <div ui-view="view2"></div>
-    </div>
+    </div> -->
+    <tab-slide-box tab="0">
+      <div class="tsb-icons" style="display:none">
+        <div class="tsb-ic-wrp">
+          <ion-scroll direction="x" class="tsb-hscroll">
+            <a href="javascript:;" id="application-slide-btn">Application</a>
+            <a href="javascript:;" id="notification-slide-btn">Notification</a>
+          </ion-scroll>
+        </div>
+      </div>
+      <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+        <ion-slide>
+            <div>
+              <h3>Application content</h3>
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <h3>Notification content</h3>
+        </ion-slide>
+      </ion-slide-box>
+    </tab-slide-box>
+    
   </ion-content>
 </ion-view>

@@ -5,7 +5,7 @@
 	  </div>
 	  <h1 class="title">{{provider.name}}</h1>
 	  <div class="buttons">
-	    <button class="button button-clear icon ion-star"></button>
+	    <button class="button button-clear icon ion-ios-more"></button>
 	  </div>
 	</ion-header-bar>
 
@@ -17,43 +17,43 @@
     		<h3 class="profile-name">{{provider.name}}</h3>
     		<p class="profile-about">{{provider.lastText}}</p>
     		<button class="button icon-left ion-calendar button-energized button-outline profile-btn"
-    			ng-click="$ionicGoBack()">Ask For Application</button>
+    			ng-click="openApplicationModal()">Ask For Application</button>
     	</div><!-- info -->
     </div><!-- highlight -->
 
 		
-		<article class="list card section">
-			<h2 class="item item-divider">Basic Info</h2>
-		  <div class="item item-text-wrap">
-		  	<h2>Title here</h2>
-		    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos ut eveniet minus quo eligendi, atque maxime officia, explicabo architecto non magnam repellendus optio quae est repudiandae tenetur praesentium amet, ipsa.</p>
-		  </div>
-		  <div class="item item-divider item-energized">
-		    See More Detail
-		  </div>
-		</article>
+	<article class="list card section">
+		<h2 class="item item-divider item-dark">Basic Info</h2>
+	  <div class="item item-text-wrap">
+	  	<h2>Title here</h2>
+	    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos ut eveniet minus quo eligendi, atque maxime officia, explicabo architecto non magnam repellendus optio quae est repudiandae tenetur praesentium amet, ipsa.</p>
+	  </div>
+	  <div class="item item-divider item-light">
+	    See More Detail
+	  </div>
+	</article>
 
-		<article class="list card section">
-			<h2 class="item item-divider">About Provider</h2>
-		  <div class="item item-text-wrap">
-		  	<h2>Title here</h2>
-		    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos ut eveniet minus quo eligendi, atque maxime officia, explicabo architecto non magnam repellendus optio quae est repudiandae tenetur praesentium amet, ipsa.</p>
-		  </div>
-		  <div class="item item-divider item-energized">
-		    See More Detail
-		  </div>
-		</article>
+	<article class="list card section">
+		<h2 class="item item-divider item-dark">About Provider</h2>
+	  <div class="item item-text-wrap">
+	  	<h2>Title here</h2>
+	    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos ut eveniet minus quo eligendi, atque maxime officia, explicabo architecto non magnam repellendus optio quae est repudiandae tenetur praesentium amet, ipsa.</p>
+	  </div>
+	  <div class="item item-divider item-light">
+	    See More Detail
+	  </div>
+	</article>
 
-		<article class="list card section">
-			<h2 class="item item-divider">Other Comments</h2>
-		  <div class="item item-text-wrap">
-		  	<h2>Title here</h2>
-		    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos ut eveniet minus quo eligendi, atque maxime officia, explicabo architecto non magnam repellendus optio quae est repudiandae tenetur praesentium amet, ipsa.</p>
-		  </div>
-		  <div class="item item-divider item-energized">
-		    See More Detail
-		  </div>
-		</article>
+	<article class="list card section">
+		<h2 class="item item-divider item-dark">Other Comments</h2>
+	  <div class="item item-text-wrap">
+	  	<h2>Title here</h2>
+	    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos ut eveniet minus quo eligendi, atque maxime officia, explicabo architecto non magnam repellendus optio quae est repudiandae tenetur praesentium amet, ipsa.</p>
+	  </div>
+	  <div class="item item-divider item-light">
+	    See More Detail
+	  </div>
+	</article>
 
   </ion-content><!-- container -->
 
@@ -61,3 +61,23 @@
 		<button  class="button button-full button-positive">Chat With Me</button>
 	</ion-footer-bar>
 </ion-view>
+
+
+<script id="templates/application-modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+      <h1 class="title">{{gradeModalType.en | uppercase}}</h1>
+      <button class="button button-clear button-primary" ng-click="closeApplicationModal()">取消</button>
+    </ion-header-bar>
+    <ion-content class="padding" style="background: white">
+    	<h2 class="title">条款</h2>
+    	<p>
+    		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto consequuntur atque ipsam odio quaerat error placeat ut quia, minima commodi ea expedita deleniti explicabo nemo, aperiam deserunt eaque. Vero, voluptates!
+    	</p>
+    	<button class="button button-full button-positive" ng-click="sendOutRequest()">确定</button>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+
+

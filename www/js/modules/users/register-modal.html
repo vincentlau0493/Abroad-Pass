@@ -1,0 +1,33 @@
+<!-- 
+	register template, $scope.registerModal,
+	need to implement signIn(user), registerModal
+ -->
+<ion-modal-view>
+	<ion-header-bar class="bar bar-header bar-light">
+		<button class="button button-clear button-primary icon ion-android-close" ng-click="loginModal.hide()"></button>
+		<h1 class="title">登录</h1>
+		<button class="button button-clear button-primary" ng-click="openRegisterModal()">注册</button>
+	</ion-header-bar>
+	<ion-content style="background:white">
+		<div class="list list-inset">
+			<label class="item item-input">
+				<span class="input-label">用户名</span>
+				<input type="text" ng-model="user.username" placeholder="可以是注册邮箱">
+			</label>
+			<label class="item item-input">
+				<span class="input-label">密码</span>
+				<input type="password" ng-model="user.password" placeholder="您的密码">
+			</label>
+		</div>
+		<div class="padding">
+			<button class="button button-block button-positive" ng-click="signIn(user)">
+				登录
+			</button>
+			<p class="text-center">
+				<a href="#/forgot-password">忘记密码</a>
+				&nbsp;&nbsp;|&nbsp;&nbsp; 
+				<a href="" ng-click="openRegisterModal('provider')">想成为Provider</a>
+			</p>
+		</div>
+	</ion-content>
+</ion-modal-view>

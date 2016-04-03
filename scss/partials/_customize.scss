@@ -2,6 +2,86 @@ ion-content.scroll-content {
 	background: $global-bg-color;
 }
 
+.item-gray {
+	background: $global-bg-color;
+}
+
+.post-loading {
+	@include transition(opacity .25s ease);
+	opacity: 0;
+}
+
+// .item.item-divider {
+// 	background: $global-bg-color;	
+// }
+
+
+// ------------------------
+// Landing page
+// ------------------------
+.landing-page {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background:  linear-gradient(0deg, rgba(255,255,255,0.2), rgba(255,255,255,0.2)), url('/img/airport.jpeg') center center no-repeat;
+	background-size: cover;
+	.content {
+		position: absolute;
+		bottom: 20%;
+		width: 100%;
+		.row {
+			width: 80%;
+			margin: 0 auto;
+			a {
+				color: white;
+				font-size: 14px;
+			}
+			button {
+				@include border-radius(30px)
+			}
+		}	
+	}
+
+}
+
+.sign-up-form {
+	margin-bottom: 10px;
+	.item-checkbox {
+		border-width: 0;
+		padding-top: 8px;
+		padding-bottom: 8px;
+		margin-top: 10px;
+		margin-bottom: -20px;
+		.checkbox-icon {
+			// width: 24px;
+			// height: 24px;
+		}
+		.item-content {
+			opacity: .7;
+			font-size: 14px;
+			line-height: 28px;
+		}
+
+	}
+}
+.sign-up-buttons {
+	.button {
+		margin-top: 0 !important;
+	}	
+}
+
+.provider-background-form {
+	.item-select select {
+		right: auto;
+		left: 35%;
+		padding-left: 10px;
+		direction: ltr;
+		option {
+			direction: ltr;
+		}
+	}
+}
+
 
 // ------------------------
 // Profile
@@ -85,3 +165,97 @@ ion-content.scroll-content {
 	opacity: .6;
 }
 
+
+// ------------------------
+// Article
+// ------------------------
+.article-meta {
+	position: relative;
+	border-width: 0px;
+	img {
+		position: absolute;
+		width: 34px;
+		height: 34px;
+		@include border-radius(50%);
+	}
+	h4, p {
+		margin: 0;
+		margin-left: 46px;
+		font-size: 12px;
+		line-height: 17px;
+	}
+
+	p {
+		color: $global-text-gray;
+	}
+}
+
+.article-container {
+	.article-meta {
+		color: lighten($global-text-gray, 10);
+	}
+
+	.article-content {
+		opacity: .8;
+	}
+}
+
+.functional-bar {
+	.tab-item .icon {
+		font-size: 26px;
+		color: rebeccapurple;
+	}
+	.badge-container {
+      position: relative;
+    }
+
+}
+
+
+
+
+// Mostly about override ionic default style
+.item-avatar.item-avatar-shrink {
+	min-height: 0px;
+	padding-bottom: 8px;
+	padding-top: 8px;
+
+	p {
+		font-size: 85%;
+	}
+	img {
+		top: 8px;
+	}
+}
+
+ng-include .list:last-child.card { // solve ng-include style bug
+	margin-bottom: 20px;
+}
+
+.list.provider-card {
+	.item-avatar img {
+		@include border-radius(0px);
+	}
+}
+
+.translate-tabs {
+	opacity: 0.9; 
+	transform: translate3d(-33%, 0px, 0px);
+}
+
+.card {
+	@include box-shadow(0 0px 0px rgba(0, 0, 0, 0.5));
+	margin: 15px 0;
+}
+
+
+.sticky-footer {
+	padding: 0;
+	.button {
+		margin: 0;
+	}
+}
+
+ion-content.has-slide-box > .scroll {
+	height: 100%;
+}

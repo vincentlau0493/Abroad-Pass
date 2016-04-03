@@ -1,5 +1,13 @@
 <ion-view view-title="留洋通" 
 	hide-nav-bar="false" ng-init="formMode = 'SIGN_IN'">
+
+	<ion-header-bar class="bar-positive">
+	  <h1 class="title">登录</h1>
+	  <div class="buttons">
+	    <button class="button button-clear">注册</button>
+	  </div>
+	</ion-header-bar>
+
 	<ion-content scroll="false">
 		<div class="animation-switch-container"
     	ng-switch on="formMode">
@@ -21,12 +29,12 @@
 <script type="text/ng-template" id="sign-in.html">
 	<div class="list list-inset">
 		<label class="item item-input">
-			<span class="input-label">Username</span>
-			<input type="text" ng-model="user.username">
+			<span class="input-label">用户名</span>
+			<input type="text" ng-model="user.username" placeholder="可以是注册邮箱">
 		</label>
 		<label class="item item-input">
-			<span class="input-label">Password</span>
-			<input type="password" ng-model="user.password">
+			<span class="input-label">密码</span>
+			<input type="password" ng-model="user.password" placeholder="您的密码">
 		</label>
 	</div>
 	<div class="padding">
@@ -44,7 +52,7 @@
 
 <!-- sign-up.html template -->
 <script type="text/ng-template" id="sign-up.html">
-		<div class="list">
+	<div class="list">
 		<label class="item item-input">
 			<span class="input-label">Username</span>
 			<input type="text" ng-model="user.username">

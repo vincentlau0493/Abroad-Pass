@@ -1,0 +1,45 @@
+<ion-view hide-nav-bar="false">
+	<ion-content scroll="false">
+		<div class="landing-page">
+			<div class="content">
+				<div class="row">
+					<button class="button button-calm button-block" href="#/tab/home" ng-click="fadeOut($event)">
+					  立即体验我们的服务
+					</button>
+				</div>
+				<div class="row">
+				  <div class="col col-50">
+				  	<a href="" ng-click="openUserFormModal('SIGN_IN')">已有账号登录</a>
+				  </div>
+				  <div class="col col-50 text-right">
+				  	<a href="" ng-click="openUserFormModal('SIGN_UP')">注册我们的应用</a>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>
+
+
+<script type="text/ng-template" id="templates/sign-in-modal.html">
+	<div class="list list-inset">
+		<label class="item item-input">
+			<span class="input-label">用户名</span>
+			<input type="text" ng-model="user.username" placeholder="可以是注册邮箱">
+		</label>
+		<label class="item item-input">
+			<span class="input-label">密码</span>
+			<input type="password" ng-model="user.password" placeholder="您的密码">
+		</label>
+	</div>
+	<div class="padding">
+		<button class="button button-block button-positive" ng-click="signIn(user)">
+			Sign In
+		</button>
+		<p class="text-center">
+			<a href="#/forgot-password">Forgot password</a>
+			&nbsp;&nbsp;|&nbsp;&nbsp; 
+			<a href="" ng-click="changeMode('SIGN_UP')">Register now</a>
+		</p>
+	</div>
+</script>

@@ -6,21 +6,76 @@
   // Fade Effect
   // --------------------------------
   /* The starting CSS styles for the enter animation */
-  .fade.ng-enter {
+  &.fade.ng-enter, .fade.ng-enter {
     transition:0.5s linear opacity;
     opacity:0;
   }
 
   /* The finishing CSS styles for the enter animation */
-  .fade.ng-enter.ng-enter-active {
+  &.fade.ng-enter.ng-enter-active, .fade.ng-enter.ng-enter-active {
     opacity:1;
   }
 
   /* now the element will fade out before it is removed from the DOM */
-  .fade.ng-leave {
+  &.fade.ng-leave, .fade.ng-leave {
     display: none;
   }
-  .fade.ng-leave.ng-leave-active {
+  &.fade.ng-leave.ng-leave-active, .fade.ng-leave.ng-leave-active {
     display: none;
   }
 }
+
+
+.has-transition {
+  @include transition(0.25s linear all);
+}
+
+
+// ------------------------
+// Slide Up Animation ( for tab )
+// ------------------------
+
+@include keyframes(tabSlideUp) {
+  from {
+    bottom: -44px;
+  }
+  to {
+    bottom: 0px;
+  }
+}
+
+.tab-slide-up {
+  @include animation(tabSlideUp .15s ease-in-out 0s 1 both)
+}
+
+
+// ------------------------
+// Temperory Fade Out Animation ( for landing page )
+// ------------------------
+@include keyframes(tmpFadeOut) {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.tmp-fade-out {
+  @include animation(tmpFadeOut .5s ease-in-out 0s 1 normal)
+}
+
+.animated.modal.slideInRight.ng-leave {
+    
+    -webkit-animation-name:slideOutRight;
+    animation-name:slideOutRight;
+}
+
+.animated.modal.slideInRight {
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+}
+
+
+
+

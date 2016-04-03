@@ -1,33 +1,3 @@
-// Mostly about override ionic default style
-.item-avatar.item-avatar-shrink {
-	min-height: 0px;
-	padding-bottom: 8px;
-	padding-top: 8px;
-
-	p {
-		font-size: 85%;
-	}
-	img {
-		top: 8px;
-	}
-}
-
-ng-include .list:last-child.card { // solve ng-include style bug
-	margin-bottom: 20px;
-}
-
-.list.provider-card {
-	.item-avatar img {
-		@include border-radius(0px);
-	}
-}
-
-.translate-tabs {
-	opacity: 0.9; 
-	transform: translate3d(-33%, 0px, 0px);
-}
-
-
 // ------------------------
 // Background Effects
 // ------------------------
@@ -49,15 +19,26 @@ ng-include .list:last-child.card { // solve ng-include style bug
 	-webkit-overflow-scrolling: touch;
 }
 
-.card {
-	@include box-shadow(0 0px 0px rgba(0, 0, 0, 0.5));
-	margin: 15px 0;
+
+.button-radius {
+	@include border-radius(50%);
 }
 
 
-.sticky-footer {
-	padding: 0;
-	.button {
-		margin: 0;
-	}
+.vertical-center {
+	position: absolute;
+	top: 50%;
+	@include transform(translateY(-50%));
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.sub-content {
+	color: #666;
 }

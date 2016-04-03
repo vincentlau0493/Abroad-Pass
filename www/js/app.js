@@ -3,13 +3,21 @@ var router = require('./router');
 
 
 // -----------------------------------
+// Execute Globals
+// -----------------------------------
+require('./globals/globals');
+
+
+// -----------------------------------
 // Execute Modules
 // -----------------------------------
 
 require('./modules/account/account');
+require('./modules/applications/applications');
 require('./modules/articles/articles'); // service
 require('./modules/chats/chats');
 require('./modules/home/home');
+require('./modules/landing/landing');
 require('./modules/providers/providers'); // service
 require('./modules/users/users');
 
@@ -28,9 +36,12 @@ require('./directives/directives');
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', [
   'ionic', 
+  'globals',
   'account',
+  'applications',
   'articles',
   'chats',
+  'landing',
   'home',
   'providers',
   'users', 

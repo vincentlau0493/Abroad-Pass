@@ -1,1 +1,53 @@
-article-detail.html
+<ion-view view-title="{{article.title}}" hide-nav-bar="false" hide-tabs>
+	<ion-header-bar class="bar-positive">
+	  <div class="buttons">
+	    <button class="button icon ion-ios-arrow-back" ng-click="$ionicGoBack()"></button>
+	  </div>
+	  <h1 class="title">文章</h1>
+	  <div class="buttons">
+	    <button class="button button-clear icon ion-ios-more"></button>
+	  </div>
+	</ion-header-bar>
+	<ion-header-bar class="bar-subheader">
+		  <div class="article-meta">
+		    <a href="#/tab/{{urlPrefix}}/providers/{{article.provider.id}}" class="press-opacity-highlight">
+		      <img ng-src="{{article.provider.avatar}}">
+		    </a>
+		    <h4>{{article.provider.name}}</h4>
+		    <p>{{article.provider.lastText}}</p>
+		  </div>
+	</ion-header-bar>
+
+
+  <ion-content scroll="true" class="padding" style="background: white">
+  	<article class="article-container">
+  		<h4 class="article-title">{{article.title}}</h4>
+		  <p class="article-meta">
+				    <a class="subdued">14 小时前</a>
+				    <a class="subdued">10 喜欢</a>
+				    <a class="subdued">500 阅读</a>
+		  </p>
+		  </p>
+			<p class="article-content">{{article.content}}</p>
+  	</article>
+
+  </ion-content><!-- container -->
+
+<!--   <ion-footer-bar class="sticky-footer">
+		<button  class="button button-full button-positive">Chat With Me</button>
+	</ion-footer-bar> -->
+	<div class="tabs tabs-icon-only tabs-light functional-bar">
+	  <a class="tab-item">
+	    <i class="icon ion-share"></i>
+	  </a>
+	  <a class="tab-item">
+	    <i class="icon ion-bookmark"></i>
+	  </a>
+	  <a class="tab-item">
+	    <i class="icon ion-heart"></i>
+	  </a>
+	  <a class="tab-item">
+	    <i class="icon ion-chatbubbles badge-container"><span class="badge badge-assertive">5</span></i>
+	  </a>
+	</div>
+</ion-view>

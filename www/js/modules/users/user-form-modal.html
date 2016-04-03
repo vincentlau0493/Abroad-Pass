@@ -1,0 +1,84 @@
+<ion-modal-view>
+	<ion-header-bar class="bar bar-header bar-light">
+		<button class="button button-clear button-primary icon ion-android-close" ng-click="userFormModal.hide()"></button>
+		<h1 class="title">{{form[formMode].title}}</h1>
+		<button class="button button-clear button-primary" ng-click="toggleMode()">{{form[formMode].rightButton}}</button>
+	</ion-header-bar>
+	<ion-content style="background:white">
+		<placeholder-space space="20px"></placeholder-space>
+		<div class="animation-switch-container"
+			 ng-switch on="formMode">
+			<div class="fade" ng-switch-when="SIGN_IN">
+				<ng-include src="'sign-in.html'"></ng-include>
+			</div>
+			<div class="fade" ng-switch-when="SIGN_UP">
+				<ng-include src="'sign-up.html'"></ng-include>
+			</div>
+		</div>
+	</ion-content>
+</ion-modal-view>
+
+
+<!-- sign-in.html template -->
+<script type="text/ng-template" id="sign-in.html">
+	<div class="list list-inset">
+		<label class="item item-input">
+			<span class="input-label">用户名</span>
+			<input type="text" ng-model="user.username" placeholder="可以是注册邮箱">
+		</label>
+		<label class="item item-input">
+			<span class="input-label">密码</span>
+			<input type="password" ng-model="user.password" placeholder="您的密码">
+		</label>
+	</div>
+	<div class="padding">
+		<button class="button button-block button-positive" ng-click="signIn(user)">
+			登录
+		</button>
+		<p class="text-center">
+			<a href="#/forgot-password">忘记密码？</a>
+		</p>
+	</div>
+</script>
+
+
+<!-- sign-up.html template -->
+<script type="text/ng-template" id="sign-up.html">
+	<div class="list list-inset sign-up-form">
+		<label class="item item-input">
+			<span class="input-label">用户名</span>
+			<input type="text" ng-model="user.username">
+		</label>
+		<label class="item item-input">
+			<span class="input-label">密码</span>
+			<input type="password" ng-model="user.password">
+		</label>
+		<label class="item item-input">
+			<span class="input-label">密码确认</span>
+			<input type="password" ng-model="user.passwordConfirm">
+		</label>
+		<ion-list>
+			<ion-checkbox ng-model="user.isProvider">想注册成为provider</ion-checkbox>
+		</ion-list>
+	</div>
+	<div class="padding sign-up-buttons">
+		<button ng-show="!user.isProvider" class="button button-block button-positive" ng-click="signUp(user)">
+			注册
+		</button>
+		<button ng-show="user.isProvider" class="button button-block button-positive" ng-click="NextStepForProvider(user)">
+			下一步
+		</button>
+		<p class="text-center">
+		<a href="" ng-click="changeMode('SIGN_IN')">《免责协议》</a>
+		</p>
+	</div>
+
+	<div class="padding" ng-show="user.isProvider">
+	    <p class="sub-content">
+			注意：成为provider前还需填写下一步的所有资料，我们会在48小时能审核您的材料。感谢加入留洋通！
+		</p>
+	</div>
+</script>
+
+
+
