@@ -1,0 +1,39 @@
+<ion-view view-title="" hide-nav-bar="false">
+	<ion-header-bar class="bar-positive">
+<!-- 	  <div class="buttons">
+	    <button class="button icon ion-ios-arrow-back" ng-click="$ionicGoBack()"></button>
+	  </div> -->
+	  <h1 class="title">四步完成留学意向</h1>
+	</ion-header-bar>
+
+  <ion-content class="profile-container" scroll="true">
+  	<div class="list">
+  		<!-- language grades -->
+			<a class="item item-icon-right" ng-click="openGradeModal('toefl')">
+				TOEFL
+				<i class="icon ion-ios-arrow-right"></i>
+			</a>
+    </div>
+  </ion-content><!-- container -->
+
+</ion-view>
+
+
+<script id="templates/grade-modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+      <h1 class="title">{{gradeModalType.en | uppercase}}</h1>
+      <button class="button button-clear button-primary" ng-click="closeGradeModal()">取消</button>
+    </ion-header-bar>
+    <ion-content class="padding">
+      <div class="list">
+
+        <label class="item item-input" ng-repeat="part in gradeModalType.parts">
+          <span class="input-label">{{part.cn}}</span>
+          <input ng-model="gradeModalType.scores[part.en]" type="text">
+        </label>
+        <button class="button button-full button-positive" ng-click="updateScores()">确定</button>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>

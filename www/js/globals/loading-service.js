@@ -25,9 +25,13 @@ function LoadingService($rootScope, $ionicLoading, $location) {
 	  }
   }
 
-
+  // @prama ele  href or element
   obj.fadeOutBeforeRedirect = function(ele) {
-  	var href = ele.getAttribute('href');
+    var href = '';
+    if (typeof ele === 'string')
+      href = ele;
+    else
+      href = ele.getAttribute('href');
   	var view = document.getElementsByTagName('ion-view');
   	angular.element(view).addClass('tmp-fade-out');
   	console.log(href);

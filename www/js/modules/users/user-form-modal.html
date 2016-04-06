@@ -62,12 +62,12 @@
 		</ion-list>
 	</div>
 	<div class="padding sign-up-buttons">
-		<button ng-show="!user.isProvider" class="button button-block button-positive" ng-click="signUp(user)">
-			注册
+		<button class="button button-block button-positive" ng-click="signUp(user)">
+			{{user.isProvider ? "下一步" : "注册"}}
 		</button>
-		<button ng-show="user.isProvider" class="button button-block button-positive" ng-click="NextStepForProvider(user)">
+<!-- 		<button ng-show="user.isProvider" class="button button-block button-positive" ng-click="NextStepForProvider(user)">
 			下一步
-		</button>
+		</button> -->
 		<p class="text-center">
 		<a href="" ng-click="changeMode('SIGN_IN')">《免责协议》</a>
 		</p>

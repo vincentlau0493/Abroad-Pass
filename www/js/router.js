@@ -14,6 +14,11 @@ function Router($stateProvider, $urlRouterProvider) {
     controller: 'UsersCtrl'     
   }) 
 
+  .state('goal', {
+    url: '/goal',
+    templateUrl: templatePath + 'goal/goal.html',
+    // controller: 'GoalCtrl'     
+  }) 
 
   .state('signin', {
     url: '/user-form',

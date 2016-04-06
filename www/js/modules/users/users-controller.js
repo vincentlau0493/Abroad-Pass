@@ -61,6 +61,15 @@ function UsersCtrl($scope, $state, $ionicModal, LoadingService) {
 
   $scope.signUp = function(user) {
     console.log('Sign-Up', user);
+    if (user && user.isProvider) {
+      $scope.NextStepForProvider(user);
+    } else {
+      // regular register
+      var promise = $ionicModal.fromTemplateUrl(modalTemplatePath + 'goals.html', {
+                      scope: $scope,
+                    });
+      fillInGoals($scope, promise, $state);
+    }
     // $state.go('tab.dash');
   }
 
@@ -89,6 +98,42 @@ function UsersCtrl($scope, $state, $ionicModal, LoadingService) {
     // };
   }
 
+}
+
+function fillInGoals($scope, promise, $state) {
+  promise.then(function(modal){
+    $scope.goalModal = modal;
+    $scope.currentStep = 1; // init step
+    $scope.goals = {};
+
+    // set default
+    $scope.goals.country = 'A';
+
+    modal.show();
+  })
+
+  var totalSteps = 4;
+
+  $scope.nextStep = function() {
+    console.log($scope.goals); // save
+    $scope.currentStep++;
+  }
+
+  $scope.previousStep = function() {
+    if ($scope.currentStep > 1)
+      $scope.currentStep--;
+  }
+
+  $scope.confirm = function() {
+    // save
+    var url = '#/tab/home';
+    // LoadingService.fadeOutBeforeRedirect(url);
+    $state.go('tab.home');
+
+    $scope.goalModal.hide();
+    $scope.userFormModal.hide();
+
+  }
 
 }
 

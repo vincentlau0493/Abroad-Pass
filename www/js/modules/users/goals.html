@@ -1,0 +1,98 @@
+<ion-modal-view>
+	<ion-header-bar class="bar bar-header bar-light">
+		<button class="button button-clear button-primary" ng-click="previousStep()" ng-show="currentStep > 1">上一步</button>
+		<h1 class="title">四步完成留学意向</h1>
+	</ion-header-bar>
+	<ion-content>
+		<div class="animation-switch-container goals-container" ng-switch on="currentStep">
+			<div class="fade" ng-switch-when="1">
+				<ng-include src="'step-1.html'"></ng-include>
+			</div>
+			<div class="fade" ng-switch-when="2">
+				<ng-include src="'step-2.html'"></ng-include>
+			</div>
+			<div class="fade" ng-switch-when="3">
+				<ng-include src="'step-3.html'"></ng-include>
+			</div>
+			<div class="fade" ng-switch-when="4">
+				<ng-include src="'step-4.html'"></ng-include>
+			</div>
+		</div>
+	</ion-content>
+</ion-modal-view>
+
+
+<script type="text/ng-template" id="step-1.html">
+	<div class="list">
+		<div class="item item-divider full-title item-calm">
+			想要进修的学历
+		</div>
+		<ion-list>
+			<ion-radio ng-model="goals.degree" ng-value="'A'">本科</ion-radio>
+			<ion-radio ng-model="goals.degree" ng-value="'B'">硕士</ion-radio>
+			<ion-radio ng-model="goals.degree" ng-value="'C'">博士</ion-radio>
+		</ion-list>
+	</div>
+	<div class="padding">
+		<button class="button button-full button-positive" ng-click="nextStep()" ng-disabled="goals.degree === undefined">下一步</button>
+	</div>
+</script>
+
+
+
+<script type="text/ng-template" id="step-2.html">
+	<div class="list">
+		<div class="item item-divider full-title item-calm">
+			想要去的国家（目前只提供香港服务）
+		</div>
+		<ion-list>
+			<ion-radio ng-model="goals.country" ng-value="'A'">香港</ion-radio>
+			<ion-radio ng-model="goals.country" ng-value="'B'" disabled="true">美国</ion-radio>
+			<ion-radio ng-model="goals.country" ng-value="'C'" disabled="true">英国</ion-radio>
+			<ion-radio ng-model="goals.country" ng-value="'D'" disabled="true">澳洲</ion-radio>
+		</ion-list>
+	</div>
+	<div class="padding">
+		<button class="button button-full button-positive" ng-click="nextStep()" ng-disabled="goals.country === undefined">下一步</button>
+	</div>
+</script>
+
+
+
+<script type="text/ng-template" id="step-3.html">
+	<div class="list">
+		<div class="item item-divider full-title item-calm">
+			想要就读的专业方向
+		</div>
+		<ion-list>
+			<ion-radio ng-model="goals.major" ng-value="'A'">专业A</ion-radio>
+			<ion-radio ng-model="goals.major" ng-value="'B'" >专业B</ion-radio>
+			<ion-radio ng-model="goals.major" ng-value="'C'" >专业C</ion-radio>
+			<ion-radio ng-model="goals.major" ng-value="'D'" >专业D</ion-radio>
+		</ion-list>
+	</div>
+	<div class="padding">
+		<button class="button button-full button-positive" ng-click="nextStep()" ng-disabled="goals.major === undefined">下一步</button>
+	</div>
+</script>
+
+
+
+<script type="text/ng-template" id="step-4.html">
+	<div class="list">
+		<div class="item item-divider full-title item-calm">
+			您的留学意向
+		</div>
+		<div>
+		<div class="item item-text-wrap">
+			<p>意向学位： {{goals.degree}}</p>
+			<p>意向国家： {{goals.country}}</p>
+			<p>意向专业： {{goals.major}}</p>
+			<br>
+			<p class="sub-content">我们会根据您的意向推荐信息，点击确认后进入留洋通。</p>
+		</div>
+	</div>
+		<div class="padding">
+		<button class="button button-full button-positive" ng-click="confirm()">确认</button>
+	</div>
+</script>

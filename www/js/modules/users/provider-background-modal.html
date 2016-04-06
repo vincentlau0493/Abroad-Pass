@@ -7,14 +7,18 @@
 		<div class="list">
 			<label class="item item-input">
 				<span class="input-label">姓名</span>
-				<input type="text" placeholder="请填写真名">
+				<input type="text" placeholder="请填写真实姓名">
 			</label>
 			<label class="item item-input">
 				<span class="input-label">邮箱</span>
 				<input type="text" placeholder="可以联系到您的邮箱">
 			</label>
 			<label class="item item-input">
-				<span class="input-label">就读院校</span>
+				<span class="input-label">电话（可选）</span>
+				<input type="text" placeholder="可以联系到您的电话">
+			</label>
+			<label class="item item-input">
+				<span class="input-label">最近就读院校</span>
 				<input type="text" placeholder="您所就读的学校">
 			</label>
 			<label class="item item-input item-select">
@@ -28,7 +32,7 @@
 					<option>其它</option>
 				</select>
 			</label>
-			<label class="item item-input">
+			<label class="item item-input"><!-- maybe ng-hide -->
 				<div class="input-label">
 					专业名称
 				</div>
@@ -44,7 +48,19 @@
 					<option>博士</option>
 				</select>
 			</label>
-			<button class="button button-full button-positive" ng-click="signUpForProvider()">确定</button>
+<!-- 			<a class="item item-icon-right" ng-click="openGradeModal('ielts')">
+				专业分类
+				<span class="item-note">
+		      		未填写
+		    	</span>
+				<i class="icon ion-ios-arrow-right"></i>
+			</a> -->
+			
+
+
+			<div class="padding">
+				<button class="button button-full button-positive" ng-click="signUpForProvider()">确定</button>
+			</div>
 		</div>
 	</ion-content>
 </ion-modal-view>
