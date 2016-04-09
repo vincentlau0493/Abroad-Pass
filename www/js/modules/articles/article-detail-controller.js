@@ -1,8 +1,11 @@
 function ArticleDetailCtrl($scope, $stateParams, $state, ArticlesService) {
 	$scope.urlPrefix = $state.current.title;
 
-	$scope.article = ArticlesService.get($stateParams.articleId);
-	console.log($scope.article);
+
+
+	ArticlesService.get($stateParams.articleId).then(function(article){
+		$scope.article = article;
+	});
 
 }
 

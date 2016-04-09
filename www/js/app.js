@@ -1,6 +1,11 @@
 var router = require('./router');
 
 
+// -----------------------------------
+// Execute Config
+// -----------------------------------
+var config = require('./config')(false);
+
 
 // -----------------------------------
 // Execute Globals
@@ -47,7 +52,7 @@ angular.module('starter', [
   'users', 
   'directives',
   ,])
-
+.value('config', config)
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

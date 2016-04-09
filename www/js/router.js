@@ -1,4 +1,6 @@
-function Router($stateProvider, $urlRouterProvider) {
+function Router($stateProvider, $urlRouterProvider, $httpProvider) {
+
+  // $httpProvider.defaults.withCredentials = true;
 
   var templatePath = 'js/modules/';
 
@@ -145,4 +147,4 @@ function Router($stateProvider, $urlRouterProvider) {
 }
 
 
-module.exports = ['$stateProvider', '$urlRouterProvider', Router];
+module.exports = ['$stateProvider', '$urlRouterProvider', '$httpProvider', Router];

@@ -1,4 +1,4 @@
-function UsersCtrl($scope, $state, $ionicModal, LoadingService) {
+function UsersCtrl($scope, $state, $ionicModal, LoadingService, UsersService) {
   
   $scope.form = {
     SIGN_IN: {
@@ -10,6 +10,10 @@ function UsersCtrl($scope, $state, $ionicModal, LoadingService) {
       rightButton: '登录',
     },    
   }
+
+  // window.u = UsersService;
+  // UsersService.login();
+
 
   $scope.fadeOut = function($event) {
     $event.preventDefault();
@@ -137,4 +141,4 @@ function fillInGoals($scope, promise, $state) {
 
 }
 
-module.exports = ['$scope', '$state', '$ionicModal', 'LoadingService', UsersCtrl];
+module.exports = ['$scope', '$state', '$ionicModal', 'LoadingService', 'UsersService', UsersCtrl];

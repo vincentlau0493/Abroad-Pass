@@ -6,9 +6,20 @@ function HomeCtrl($scope, $ionicActionSheet, ProvidersService, ArticlesService, 
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
-  LoadingService.show();
-  $scope.articles = ArticlesService.all();
+
+  // $scope identity
+  $scope.urlPrefix = 'home';
+
   
+
+  LoadingService.show();
+  // $scope.articles = ArticlesService.all();
+  
+  ArticlesService.all().then(function(articles) {
+    $scope.articles = articles;
+    LoadingService.hide(true);
+  })
+
 
   var providers = ProvidersService.all();
   var pLen = providers.length;
@@ -39,14 +50,13 @@ function HomeCtrl($scope, $ionicActionSheet, ProvidersService, ArticlesService, 
   }
 
 
-  // $scope identity
-  $scope.urlPrefix = 'home';
-  setTimeout(function(){
-    LoadingService.hide(true);    
-  }, 1000)
+
+  // setTimeout(function(){
+        
+  // }, 1000)
 
 }
 
 
 
-module.exports = ['$scope', '$ionicActionSheet', 'ProvidersService', 'ArticlesService', 'LoadingService', HomeCtrl];
+module.exports = ['$scope','$ionicActionSheet', 'ProvidersService', 'ArticlesService', 'LoadingService', HomeCtrl];

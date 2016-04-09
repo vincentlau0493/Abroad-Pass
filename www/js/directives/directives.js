@@ -12,15 +12,15 @@ app
 	    link: function($scope, $el) {
 	    	var tabsEle = document.getElementsByClassName('tab-nav tabs')[0];
 	      var tmpCount = ++count;
-	      console.log('cur hide tabs:', count);
+	      // console.log('cur hide tabs:', count);
 	      $rootScope.hideTabs = 'tabs-item-hide';
 	      $scope.$on('$ionicView.leave', function(e) {
-	      	console.log('leave', count)
+	      	// console.log('leave', count)
 	      	if (tmpCount == count) 
 	      		count--; // no hide tabs comes in
 	      	if (count == 0) {
-						$rootScope.hideTabs = ''; // no hide tabs in the stack	      
-						tabsEle.classList.add('tab-slide-up');
+				$rootScope.hideTabs = ''; // no hide tabs in the stack	      
+				tabsEle.classList.add('tab-slide-up');
 	      	}
 
 	      });

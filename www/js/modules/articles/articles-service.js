@@ -1,55 +1,81 @@
-function ArticlesService() {
+function ArticlesService($http, $q) {
   // Might use a resource here that returns a JSON array
-  
-  // Some fake testing data
-	var articles = [{
-		id: 0,
-		provider: {
-			id: 0,
-			name: 'Ben Sparrow',
-			lastText: 'You on your way?',
-			avatar: 'img/ben.png'
-		},
-		title: '最受国际生喜欢的8所美国大学',
-		content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod vero labore ullam asperiores pariatur deserunt quam necessitatibus delectus, quae accusantium qui. Voluptatum vitae impedit, dolorem ipsam aperiam minus aspernatur natus!'
-	}, {
-		id: 1,
-		provider: {
-		    id: 1,
-		    name: 'Max Lynx',
-		    lastText: 'Hey, it\'s me',
-		    avatar: 'img/max.png'
-		},
-		title: '最受国际生喜欢的9所美国大学',
-		content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod vero labore ullam asperiores pariatur deserunt quam necessitatibus delectus, quae accusantium qui. Voluptatum vitae impedit, dolorem ipsam aperiam minus aspernatur natus!'		
-	}, {
-		id: 2,
-		provider: {
-		    id: 2,
-		    name: 'Adam Bradleyson',
-		    lastText: 'I should buy a boat',
-		    avatar: 'img/adam.jpg'
-		},
-		title: '最受国际生喜欢的10所美国大学',
-		content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod vero labore ullam asperiores pariatur deserunt quam necessitatibus delectus, quae accusantium qui. Voluptatum vitae impedit, dolorem ipsam aperiam minus aspernatur natus!'					
-	}];
+  function getRequestUrl(module, action) {
+  	return config.url + module + '/' + action + '/';
+  }
 
-  var myObject = {};
+  function Service() {
+  	this.articles = null;
+  	this.articleIdMap = {};
+  }
 
-  myObject.all = function() {
-    return articles;
-  };
+  Service.prototype.all = function() {
+  	var self = this;
 
-  myObject.get = function(aId) {
-    for (var i = 0; i < articles.length; i++) {
-      if (articles[i].id === parseInt(aId)) {
-        return articles[i];
-      }
-    }
-    return null;
-  };
+		var deferred = $q.defer();
+		//    If we already have the name, we can resolve the promise.
+		if(self.articles !== null) {
+			console.log('from cache');
+			deferred.resolve(self.articles);
+		} else {
+			//    Get the articles from the server.
+			$http.get('/data/articles.json')
+				.success(function(response) {
+					console.log('from server');
+					self.articles = response;
 
-  return myObject;
+					self.articles.forEach(function(article){
+						self.articleIdMap[article.id] = article;
+					})
+
+					deferred.resolve(response);
+				})
+				.error(function(response) {
+					console.error('service error', response);
+					deferred.reject(response);
+				});
+		}
+
+		//    Now return the promise.
+		return deferred.promise;
+  }
+
+  Service.prototype.get = function(aId) {
+  	var self = this;
+
+		var deferred = $q.defer();
+		//    If we already have the name, we can resolve the promise.
+		if(self.articles !== null && self.articleIdMap[aId] != null) {
+			console.log('from cache');
+			var article = self.articleIdMap[aId];
+			deferred.resolve(article);
+		} else {
+			//    Get the articles from the server.
+			//    Change it by getting data with id
+			self.all().then(function(articles){
+				var article = findArticleById(self.articles, aId)
+				deferred.resolve(article);
+			})
+		}
+
+		function findArticleById(articles, id) {
+			for (var i = 0; i < articles.length; i++) {
+				if (articles[i].id === parseInt(aId)) {
+					return articles[i];
+				}
+			}
+			return null;			
+		}
+
+		//    Now return the promise.
+		return deferred.promise;
+  }
+
+  return new Service();
 }
 
 module.exports = ArticlesService;
+
+
+
+
