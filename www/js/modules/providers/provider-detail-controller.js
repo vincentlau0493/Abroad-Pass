@@ -1,17 +1,11 @@
 function ProviderDetailCtrl($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, ProvidersService) {
 	var pid = $stateParams.providerId;
-  $scope.provider = ProvidersService.get(pid);
+
+  ProvidersService.get(pid).then(function(provider){
+    $scope.provider = provider;
+  });
 
   // $ionicConfigProvider.backButton.previousTitleText(false)
-  
-	/**
-		* Change by current mode
-		* @param {Enum} mode 
-		* 	[background, articles, comments]
-		*/
-  $scope.changeMode = function(mode) {
-  	$scope.mode = mode;
-  }
 
   $scope.goBack = function() {
   	ionicHistory.goBack();

@@ -10,8 +10,6 @@ function HomeCtrl($scope, $ionicActionSheet, ProvidersService, ArticlesService, 
   // $scope identity
   $scope.urlPrefix = 'home';
 
-  
-
   LoadingService.show();
   // $scope.articles = ArticlesService.all();
   
@@ -20,20 +18,35 @@ function HomeCtrl($scope, $ionicActionSheet, ProvidersService, ArticlesService, 
     LoadingService.hide(true);
   })
 
+  ProvidersService.getRecommendedProviders()
+    .then(function(providers){
+      var pLen = providers.length;
+      var idx = 2;
+      $scope.provider = providers[idx]; // current shown provider
 
-  var providers = ProvidersService.all();
-  var pLen = providers.length;
-  var idx = 2;
-  $scope.provider = providers[idx]; // current shown provider
+      $scope.nextProvider = function() {
+        idx = (idx + 1) % pLen;
+        $scope.provider = providers[idx];
+      }
 
-  $scope.nextProvider = function() {
-  	idx = (idx + 1) % pLen;
-  	$scope.provider = providers[idx];
+    })
+
+
+  $scope.doRefresh = function() {
+
+    ArticlesService.all()
+      .then(function(articles) {
+         $scope.articles = articles;
+      })
+      .finally(function() {
+        // Stop the ion-refresher from spinning
+        $scope.$broadcast('scroll.refreshComplete');
+      });
+
   }
 
   $scope.showActionSheet = function($event) {
 
-  	console.log($event.currentTarget);
   	// return hideSheet function
 		var hideSheet = $ionicActionSheet.show({
 			buttons: [
@@ -48,13 +61,6 @@ function HomeCtrl($scope, $ionicActionSheet, ProvidersService, ArticlesService, 
 			}
 		});
   }
-
-
-
-  // setTimeout(function(){
-        
-  // }, 1000)
-
 }
 
 

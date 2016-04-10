@@ -6,8 +6,11 @@
       <button class="button button-clear icon ion-star"></button>
     </div> -->
   </ion-header-bar>
-
   <ion-content class="post-loading">
+    <ion-refresher
+      on-refresh="doRefresh()">
+    </ion-refresher>
+
     <article class="list card provider-card">
       <div class="item item-divider item-light">
         People You May Want

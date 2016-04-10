@@ -1,50 +1,77 @@
-function ProvidersService() {
+function ProvidersService($http, $q) {
   // Might use a resource here that returns a JSON array
 
-  // Some fake testing data
-  var providers = [{
-    id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    avatar: 'img/ben.png'
-  }, {
-    id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    avatar: 'img/max.png'
-  }, {
-    id: 2,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    avatar: 'img/adam.jpg'
-  }, {
-    id: 3,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    avatar: 'img/perry.png'
-  }, {
-    id: 4,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    avatar: 'img/mike.png'
-  }];
+  function Service() {
+    this.providers = null;
+    this.providerIdMap = {};
+  }
 
-  var myObject = {};
+  Service.prototype.getRecommendedProviders = function() {
+    var self = this;
 
-  myObject.all = function() {
-    return providers;
-  };
+    var deferred = $q.defer();
+    //    If we already have the name, we can resolve the promise.
+    if(self.providers !== null) {
+      console.log('from cache');
+      deferred.resolve(self.providers);
+    } else {
+      //    Get the providers from the server.
+      $http.get('/data/providers.json')
+        .success(function(response) {
+          console.log('from server');
+          self.providers = response;
 
-  myObject.get = function(pId) {
-    for (var i = 0; i < providers.length; i++) {
-      if (providers[i].id === parseInt(pId)) {
-        return providers[i];
-      }
+          self.providers.forEach(function(provider){
+            self.providerIdMap[provider.id] = provider;
+          })
+
+          deferred.resolve(response);
+        })
+        .error(function(response) {
+          console.error('service error', response);
+          deferred.reject(response);
+        });
     }
-    return null;
-  };
 
-  return myObject;
+    //    Now return the promise.
+    return deferred.promise;
+  }
+
+
+  Service.prototype.get = function(pId) {
+    var self = this;
+
+    var deferred = $q.defer();
+    //    If we already have the name, we can resolve the promise.
+    if(self.providers !== null && self.providerIdMap[pId] != null) {
+      console.log('from cache');
+      var provider = self.providerIdMap[pId];
+      deferred.resolve(provider);
+    } else {
+      //    Get the providers from the server.
+      //    Change it by getting data with id
+      self.getRecommendedProviders().then(function(providers){
+        var provider = findProviderById(self.providers, pId)
+        deferred.resolve(provider);
+      })
+    }
+
+    function findProviderById(providers, id) {
+      for (var i = 0; i < providers.length; i++) {
+        if (providers[i].id === parseInt(pId)) {
+          return providers[i];
+        }
+      }
+      return null;      
+    }
+
+    //    Now return the promise.
+    return deferred.promise;
+  }
+
+  return new Service();
 }
 
 module.exports = ProvidersService;
+
+

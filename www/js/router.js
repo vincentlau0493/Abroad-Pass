@@ -127,7 +127,15 @@ function Router($stateProvider, $urlRouterProvider, $httpProvider) {
     views: {
       'tab-account': {
         templateUrl: templatePath + 'account/tab-account.html',
-        controller: 'AccountCtrl'
+        controller: 'AccountCtrl',
+        resolve: {
+          gradeMap: function(AccountService) {
+            return AccountService.getGradeMap();
+          },
+          account: function(AccountService) {
+            return AccountService.get();
+          }
+        }
       }
     }
   })
@@ -136,7 +144,15 @@ function Router($stateProvider, $urlRouterProvider, $httpProvider) {
     views: {
       'tab-account': {
         templateUrl: templatePath + 'account/background.html',
-        controller: 'AccountCtrl'
+        controller: 'AccountCtrl',
+        resolve: {
+          gradeMap: function(AccountService) {
+            return AccountService.getGradeMap();
+          },
+          account: function(AccountService) {
+            return AccountService.get();
+          }
+        }
       }
     }
   });

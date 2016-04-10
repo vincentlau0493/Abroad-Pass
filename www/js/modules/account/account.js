@@ -1,3 +1,3 @@
 module.exports = angular.module('account', [])
-	.factory('Account', require('./account-service'))
+	.factory('AccountService', require('./account-service'))
 	.controller('AccountCtrl', require('./account-controller'));

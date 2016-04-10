@@ -1,0 +1,15 @@
+{  
+    "id":1,
+    "name":"Jason Smith",
+    "grades":{  
+        "toefl":{  
+            "reading":20,
+            "listening":20,
+            "speaking":20,
+            "writing":20,
+            "total":80
+        },
+        "gpa":3.4
+    },
+    "avatar":"img/max.png"
+}

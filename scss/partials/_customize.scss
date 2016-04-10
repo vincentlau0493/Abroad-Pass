@@ -97,7 +97,38 @@ ion-content.scroll-content {
 			opacity: 0.3;
 		}
 	}
+
+	.progress-bar {
+		display: none;
+		height: 18px;
+		width: 100%;
+		padding: 0;
+		background: white;
+		border-color: #28a54c;
+		div {
+			float: left;
+			border-left: 1px solid rgba(#33cd5f, .5);
+			box-sizing: border-box;
+			width: 25%;
+			height: 100%;
+			&:first-child {
+				border-left: 0px solid #33cd5f;
+			}
+			&.active {
+				background: #33cd5f;
+			}
+		}
+	}
+
+
 }
+
+.scroll-refresher .ionic-refresher-content {
+	bottom: 20px;
+}
+
+
+
 
 
 // ------------------------

@@ -1,9 +1,9 @@
 <ion-view view-title="Account" hide-nav-bar="true">
   <ion-content class="profile-container">
     <div class="profile-highlight">
-    	<div class="profile-banner full-bg blur-bg" style="background: linear-gradient(0deg, rgba(2,173,231,0.5), rgba(2,173,231,0.5)), url('img/max.png')"></div>
+    	<div class="profile-banner full-bg blur-bg" style="background: linear-gradient(0deg, rgba(2,173,231,0.5), rgba(2,173,231,0.5)), url('{{account.avatar}}')"></div>
     	<div class="profile-info">
-    		<img class="profile-avatar" src="img/max.png">
+    		<img class="profile-avatar" ng-src="{{account.avatar}}">
     		<h3 class="profile-name">{{account.name}}</h3>
     		<p class="profile-about">This is self-description</p>
     		<button class="button icon-left ion-edit button-energized button-outline profile-btn">Edit Profile</button>

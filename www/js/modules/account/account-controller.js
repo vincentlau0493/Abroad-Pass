@@ -1,16 +1,13 @@
-function AccountCtrl($scope, $ionicModal, Account) {
+function AccountCtrl($scope, $ionicModal, AccountService, account, gradeMap) {
 
-	$scope.account = Account.get();
-	var gradeMap = Account.getGradeMap();
+	$scope.account = account;
+	// var gradeMap = AccountService.getGradeMap();
 	var grades = $scope.account.grades;
 
   $scope.settings = {
     enableFriends: true
   };
 
-  Account.getGradeMapAsync().then(function(data) {
-      console.log(data);
-  });
 
   // modal service
 	$ionicModal.fromTemplateUrl('templates/grade-modal.html', {
@@ -49,4 +46,4 @@ function AccountCtrl($scope, $ionicModal, Account) {
 
 }
 
-module.exports = ['$scope', '$ionicModal', 'Account', AccountCtrl];
+module.exports = ['$scope', '$ionicModal', 'AccountService', 'account', 'gradeMap', AccountCtrl];
