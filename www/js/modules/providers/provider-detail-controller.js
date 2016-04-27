@@ -1,8 +1,11 @@
-function ProviderDetailCtrl($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, ProvidersService) {
+function ProviderDetailCtrl($scope, $stateParams, $http, $ionicModal, $ionicPopup, $timeout, ProvidersService, LoadingService) {
 	var pid = $stateParams.providerId;
 
   ProvidersService.get(pid).then(function(provider){
     $scope.provider = provider;
+  }).finally(function(){
+    // maybe we should keep this spinner when failure
+    LoadingService.hideSpinner(true);
   });
 
   // $ionicConfigProvider.backButton.previousTitleText(false)
@@ -36,6 +39,26 @@ function ProviderDetailCtrl($scope, $stateParams, $ionicModal, $ionicPopup, $tim
 	    removeListener();
 		});
 
+    // application = 'http://121.42.178.246:8008/api/v1/application/generate/'
+    // 5a98a977d8dfa8f7975da94299a7a900a1dcfb34
+    var data1 = {providerId:11}
+
+    var req = {
+      method: 'post',
+      url: 'http://121.42.178.246:8008/api/v1/application/generate/?api_key=5a98a977d8dfa8f7975da94299a7a900a1dcfb34&username=liujiayu',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: data1 // {'username':'liujiayu1','password':'abc123'}
+    }
+    $http(req).then(function(data){
+      console.log('success');
+      console.log(data);
+    }, function(data){
+      console.log('error');
+      console.log(data);
+    });
+
 		$scope.applicationModal.hide();
   }
 
@@ -53,4 +76,4 @@ function ProviderDetailCtrl($scope, $stateParams, $ionicModal, $ionicPopup, $tim
 }
 
 
-module.exports = ['$scope', '$stateParams', '$ionicModal', '$ionicPopup', '$timeout', 'ProvidersService', ProviderDetailCtrl];
+module.exports = ['$scope', '$stateParams', '$http', '$ionicModal', '$ionicPopup', '$timeout', 'ProvidersService', 'LoadingService', ProviderDetailCtrl];

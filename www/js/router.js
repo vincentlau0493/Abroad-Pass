@@ -121,6 +121,16 @@ function Router($stateProvider, $urlRouterProvider, $httpProvider) {
     }
   })
 
+  .state('tab.application-detail', {
+    url: '/applications/:applicationId',
+    views: {
+      'tab-applications': {
+        templateUrl: templatePath + 'applications/application-detail.html',
+        controller: 'ApplicationDetailCtrl'
+      }
+    }
+  })
+
   // Account
   .state('tab.account', {
     url: '/account',

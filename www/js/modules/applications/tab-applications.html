@@ -1,11 +1,12 @@
 <ion-view view-title="Applications" hide-nav-bar="true" >
 	<ion-header-bar class="bar-light">
 	  <h1 class="title">申请管理</h1>
+    <button class="button button-clear icon ion-ios-email-outline"></button>
 	</ion-header-bar>
   <ion-header-bar class="bar-subheader">
     <div class="button-bar tab-button-bar">
       <a class="button active" data-tab-btn="application" ng-click="switchSlide($event)">申请</a>
-      <a class="button" data-tab-btn="notification" ng-click="switchSlide($event)">消息</a>
+      <a class="button" data-tab-btn="notification" ng-click="switchSlide($event)">需求<span>(3)</span></a>
     </div>
   </ion-header-bar>
   <ion-content class="has-slide-box">
@@ -27,15 +28,68 @@
       </div>
       <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
         <ion-slide>
-            <div>
-              <h3>Application content</h3>
-            </div>
+          <ng-include src="'application-slide.html'"></ng-include>
         </ion-slide>
         <ion-slide>
-            <h3>Notification content</h3>
+            <ng-include src="'notification-slide.html'"></ng-include>
         </ion-slide>
       </ion-slide-box>
     </tab-slide-box>
     
   </ion-content>
 </ion-view>
+
+
+<script type="text/ng-template" id="application-slide.html">
+  <ion-content class="application-container">
+    <div class="banner-container">
+      <div class="goals vertical-center">
+        <h4>在这里管理申请</h4>
+        <p>联系申请人，他们能一对一的为你定制申请方案，提高拿offer的概率</p>
+        <button href="" class="button button-calm button-block" ng-click="fillGoal()">修改留学意向</button>
+      </div>
+
+
+    </div>
+
+    <div class="no-notification" ng-show="false">
+      <span class="no-msg-icon ion-person-stalker"></span>
+      <h4>还没有收到申请通知</h4>
+    </div>
+    <div ng-repeat="application in applications">
+      <ng-include src="'js/modules/applications/application-item.html'"></ng-include>
+    </div>
+
+  </ion-content>
+</script>
+
+
+<script type="text/ng-template" id="notification-slide.html">
+  <ion-content>
+    <div class="no-notification" ng-show="false">
+      <span class="no-msg-icon ion-android-notifications-none"></span>
+      <h4>还没有收到消息通知</h4>
+    </div>
+
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
+        <img ng-src="{{chat.face}}">
+        <h2>{{chat.name}}</h2>
+        <p>{{chat.lastText}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(chat)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+
+
+  </ion-content>
+
+
+</script>
+
+
+
+

@@ -1,0 +1,28 @@
+<article class="list card flat-card">
+	<a class="item item-thumbnail-left item-icon-right" 
+		style="padding-bottom: 8px; padding-left: 116px;" 
+		href="#/tab/{{urlPrefix}}/{{application.id}}">
+		<img ng-src="{{application.provider.avatar}}">
+		<div class="provider-info">
+			<h4>{{application.provider.name}}</h4>
+		</div>
+		<div>
+			<div class="application-detail">
+				<h2>申请时间</h2>
+				<p>{{application.create_date}}</p>
+			</div>
+
+			<div class="application-detail">
+				<h2>目前状态</h2>
+				<p>{{application.status}}</p>
+			</div>
+
+			<div class="application-detail">
+				<h2>申请细节</h2>
+				<p>选校，申请，简历，文书</p>
+			</div>
+		</div>
+		<i class="icon ion-ios-arrow-right"></i>
+		<div class="application-badge" ng-show="{{application.has_new_status}}">有新动态</div>
+	</a>
+</article>

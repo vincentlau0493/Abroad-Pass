@@ -8,7 +8,8 @@
          "avatar":"img/ben.png"
       },
       "title":"最受国际生喜欢的8所美国大学",
-      "content":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod vero labore ullam asperiores pariatur deserunt quam necessitatibus delectus, quae accusantium qui. Voluptatum vitae impedit, dolorem ipsam aperiam minus aspernatur natus!"
+      "content":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod vero labore ullam asperiores pariatur deserunt quam necessitatibus delectus, quae accusantium qui. Voluptatum vitae impedit, dolorem ipsam aperiam minus aspernatur natus!",
+      "brief":"Loren ipsum dolor sit amet, consectetur ..."
    },
    {  
       "id":1,
@@ -19,7 +20,8 @@
          "avatar":"img/max.png"
       },
       "title":"最受国际生喜欢的9所美国大学",
-      "content":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod vero labore ullam asperiores pariatur deserunt quam necessitatibus delectus, quae accusantium qui. Voluptatum vitae impedit, dolorem ipsam aperiam minus aspernatur natus!"
+      "content":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod vero labore ullam asperiores pariatur deserunt quam necessitatibus delectus, quae accusantium qui. Voluptatum vitae impedit, dolorem ipsam aperiam minus aspernatur natus!",
+      "brief":"Loren ipsum dolor sit amet, consectetur ..."
    },
    {  
       "id":2,
@@ -30,6 +32,7 @@
          "avatar":"img/adam.jpg"
       },
       "title":"最受国际生喜欢的10所美国大学",
-      "content":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod vero labore ullam asperiores pariatur deserunt quam necessitatibus delectus, quae accusantium qui. Voluptatum vitae impedit, dolorem ipsam aperiam minus aspernatur natus!"
+      "content":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod vero labore ullam asperiores pariatur deserunt quam necessitatibus delectus, quae accusantium qui. Voluptatum vitae impedit, dolorem ipsam aperiam minus aspernatur natus!",
+      "brief":"Loren ipsum dolor sit amet, consectetur ..."
    }
 ]

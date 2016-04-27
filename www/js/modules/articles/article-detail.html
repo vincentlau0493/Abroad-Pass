@@ -8,7 +8,7 @@
 	    <button class="button button-clear icon ion-ios-more"></button>
 	  </div>
 	</ion-header-bar>
-	<ion-header-bar class="bar-subheader">
+	<ion-header-bar class="bar-subheader post-loading">
 		  <div class="article-meta">
 		    <a href="#/tab/{{urlPrefix}}/providers/{{article.provider.id}}" class="press-opacity-highlight">
 		      <img ng-src="{{article.provider.avatar}}">
@@ -17,15 +17,17 @@
 		    <p>{{article.provider.lastText}}</p>
 		  </div>
 	</ion-header-bar>
-
+	
 
   <ion-content scroll="true" class="padding" style="background: white">
-  	<article class="article-container">
+  	<ion-spinner icon="spiral"></ion-spinner>
+
+  	<article class="article-container post-loading">
   		<h4 class="article-title">{{article.title}}</h4>
 		  <p class="article-meta">
-				    <a class="subdued">14 小时前</a>
-				    <a class="subdued">10 喜欢</a>
-				    <a class="subdued">500 阅读</a>
+				    <a class="subdued">{{article.timestamp}}</a>
+				    <a class="subdued">{{article.likes}} 喜欢</a>
+				    <a class="subdued">{{article.read}} 阅读</a>
 		  </p>
 		  </p>
 			<p class="article-content">{{article.content}}</p>

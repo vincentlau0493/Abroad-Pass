@@ -3,8 +3,8 @@
     <a href="#/tab/{{urlPrefix}}/providers/{{article.provider.id}}" class="press-opacity-highlight"> 
       <img class="item-image" ng-src="{{article.provider.avatar}}">
     </a>
-    <h2>{{article.provider.name}}</h2>
-    <p>{{article.provider.lastText}}</p>
+    <h2>{{article.provider.username}}</h2>
+    <p>{{article.provider.username}}</p>
     <i style="cursor:pointer"
        class="icon ion-ios-plus-outline press-opacity-highlight" 
        ng-click="showActionSheet($event)"></i>
@@ -14,12 +14,12 @@
      href="#/tab/{{urlPrefix}}/articles/{{article.id}}">
       <!-- <img class="full-image" src="http://www.aliok.com.tr/post-assets/code/img/delorean.jpg"> -->
       <h2 class="title">{{article.title}}</h2>
-      <p>{{article.content}}</p>
+      <p>{{article.brief}}</p>
   </a>
   <p style="padding:16px 16px 6px 16px;">
-    <a class="subdued">14 小时前</a>
-    <a class="subdued">1 Like</a>
-    <a class="subdued">5 Comments</a>
+    <a class="subdued">{{article.timestamp}}</a>
+    <a class="subdued">{{article.likes}} 喜欢</a>
+    <a class="subdued">{{article.read}} 阅读</a>
   </p>
 
 

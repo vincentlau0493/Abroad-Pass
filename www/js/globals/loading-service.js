@@ -25,6 +25,18 @@ function LoadingService($rootScope, $ionicLoading, $location) {
 	  }
   }
 
+  obj.hideSpinner = function(hasPostLoad) {
+
+    var spinner = document.getElementsByTagName('ion-spinner');
+    angular.element(spinner).css('display', 'none');
+    if (hasPostLoad) {
+      var eles = document.getElementsByClassName(loadingClassName);
+      angular.element(eles).css('opacity', 1);
+    }    
+
+  }
+
+
   // @prama ele  href or element
   obj.fadeOutBeforeRedirect = function(ele) {
     var href = '';

@@ -1,0 +1,86 @@
+<ion-view view-title="" hide-nav-bar="false">
+	<ion-header-bar class="bar-calm">
+	  <div class="buttons">
+	    <button class="button icon ion-ios-arrow-back" ng-click="$ionicGoBack()"></button>
+	  </div>
+	  <h1 class="title">申请细节</h1>
+	  <div class="buttons">
+	    <button class="button button-clear icon ion-ios-more"></button>
+	  </div>
+	</ion-header-bar>
+
+  <ion-content scroll="true" style="background: white">
+  	<!-- <ion-spinner icon="spiral"></ion-spinner> -->
+		<div class="application-detail-container">
+	    <div class="application-highlight">
+	    	<div class="application-banner full-bg blur-bg" style="background: linear-gradient(0deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/default_banner.png')"></div>
+	    	<div class="application-info">
+	    		<div class="application-provider">
+	    			<a href=""><img class="provider-avatar" ng-src="img/ben.png"></a>
+						<button class="button button-energized button-block button-small button-outline" ng-click="complain()">
+						  催一下 ^-^
+						</button>
+	    		</div>
+	    		<div class="application-details">
+	    			<p class="detail-title">负责人</p>
+	    			<p class="detail-content">家兴</p>
+	    			<p class="detail-title">申请学校与专业</p>
+	    			<p class="detail-content">英国皇家学院艺术建筑系</p>
+	    			<p class="detail-title">目前进度（由provider更新）</p>
+	    			<p class="detail-content">书写简历中</p>
+	    		</div>
+	    	</div>
+	    </div>
+
+			<div class="list">
+
+			  <a class="item item-icon-left item-icon-right" href="#">
+			    <i class="icon ion-ios-information-outline"></i>
+			    更多申请细节
+      			<i class="icon ion-ios-arrow-right"></i>
+			  </a>
+
+				<div class="item item-divider">
+			    申请步骤
+			  </div>
+
+			  <a class="item item-icon-left item-icon-right" href="#" ng-click="false && unactivated()">
+			    <i class="icon ion-ios-world-outline"></i>
+			    <h2>选校</h2>
+      		<p>已锁定你的目标学校专业，可点击查看</p>
+			    <i class="icon ion-ios-checkmark-outline finish-btn"></i>
+			  </a>
+
+			  <a class="item item-icon-left item-icon-right" href="#" ng-click="false && unactivated()">
+			    <i class="icon ion-ios-cloud-upload-outline"></i>
+			    <h2>创建申请账号</h2>
+      		<p>已创建，可点击查看</p>
+			    <i class="icon ion-ios-checkmark-outline finish-btn"></i>
+			  </a>
+
+			  <a class="item item-icon-left item-icon-right" href="#" ng-click="false && unactivated()">
+			    <i class="icon ion-ios-paper-outline"></i>
+			    <h2>简历</h2>
+      		<p>正在书写简历</p>
+			    <i class="icon ion-ios-arrow-right ongoing-btn"></i>
+			  </a>
+
+			  <a class="item item-icon-left item-icon-right disabled-item" href="#" ng-click="true && unactivated($event, 'ps')">
+			    <i class="icon ion-ios-book-outline"></i>
+			    <h2>个人陈述</h2>
+      		<p>未激活</p>
+			    <i class="icon ion-ios-arrow-right unreach-btn"></i>
+			  </a>
+
+			  <a class="item item-icon-left item-icon-right disabled-item" href="#" ng-click="true && unactivated($event, 'submit')">
+			    <i class="icon ion-ios-paperplane-outline"></i>
+			    <h2>寄送材料与提交申请</h2>
+      		<p>未激活</p>
+			    <i class="icon ion-ios-arrow-right unreach-btn"></i>
+			  </a>
+			</div>
+
+		</div>
+
+  </ion-content><!-- container -->
+</ion-view>

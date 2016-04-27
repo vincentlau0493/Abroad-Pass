@@ -1,5 +1,9 @@
-function ProvidersService($http, $q) {
+function ProvidersService($http, $q, UrlService) {
   // Might use a resource here that returns a JSON array
+
+  var requestUrl = UrlService.getModuleUrl('provider');
+  var isDev = requestUrl.isDev;
+
 
   function Service() {
     this.providers = null;
@@ -21,9 +25,9 @@ function ProvidersService($http, $q) {
           console.log('from server');
           self.providers = response;
 
-          self.providers.forEach(function(provider){
-            self.providerIdMap[provider.id] = provider;
-          })
+          // self.providers.forEach(function(provider){
+          //   self.providerIdMap[provider.id] = provider;
+          // })
 
           deferred.resolve(response);
         })
@@ -43,17 +47,38 @@ function ProvidersService($http, $q) {
 
     var deferred = $q.defer();
     //    If we already have the name, we can resolve the promise.
-    if(self.providers !== null && self.providerIdMap[pId] != null) {
+    if(self.providerIdMap[pId] != null) {
       console.log('from cache');
       var provider = self.providerIdMap[pId];
       deferred.resolve(provider);
     } else {
-      //    Get the providers from the server.
-      //    Change it by getting data with id
-      self.getRecommendedProviders().then(function(providers){
-        var provider = findProviderById(self.providers, pId)
-        deferred.resolve(provider);
-      })
+      
+      if (isDev) {
+        self.getRecommendedProviders().then(function(providers){
+          var provider = findProviderById(self.providers, pId)
+
+          deferred.resolve(provider);
+        })        
+      } else {
+        $http.get(requestUrl.getProviderById(pId))
+          .success(function(response) {
+            console.log('from server');
+            var provider = response;
+            if (!provider.avatar) {
+              provider.avatar = 'img/default_avatar.jpg';
+              provider.no_avatar = true;
+            }
+
+
+            self.providerIdMap[pId] = provider;
+            deferred.resolve(provider);
+          })
+          .error(function(response) {
+            console.error('service error', response);
+            deferred.reject(response);
+          });
+      }   
+      
     }
 
     function findProviderById(providers, id) {

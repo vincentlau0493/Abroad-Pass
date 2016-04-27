@@ -4,7 +4,7 @@ var router = require('./router');
 // -----------------------------------
 // Execute Config
 // -----------------------------------
-var config = require('./config')(false);
+var config = require('./config');
 
 
 // -----------------------------------

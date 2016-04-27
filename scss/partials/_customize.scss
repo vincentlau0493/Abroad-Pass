@@ -11,6 +11,11 @@ ion-content.scroll-content {
 	opacity: 0;
 }
 
+.spinner {
+	display: block;
+	text-align: center;
+}
+
 // .item.item-divider {
 // 	background: $global-bg-color;	
 // }
@@ -129,13 +134,10 @@ ion-content.scroll-content {
 
 
 
-
-
 // ------------------------
-// Profile
+// Account
 // ------------------------
-.profile-container {
-	
+.account-container {
 	.profile-highlight {
 		position: relative;
 		padding: 20px 0;
@@ -182,7 +184,122 @@ ion-content.scroll-content {
 			width: 104%;
 			height: 104%;
 		}
-	}	
+	}
+}
+
+
+
+
+// ------------------------
+// Profile
+// ------------------------
+.profile-container {
+
+	.profile-highlight {
+		position: relative;
+		padding: 20px 16px;
+		padding-bottom: 10px;
+		overflow: hidden;
+		// background-color: #46a3c2;
+		.profile-info {
+			position: relative;
+			margin-bottom: 30px;
+			.profile-avatar {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 85px;
+				// margin-top: 10px;
+				@include border-radius(50%);
+				border: 2px solid rgba(white, .9);
+			}
+
+			.detail-title {
+				color: white;
+				font-size: 12px;
+				margin-top: 10px;
+			}
+			.detail-content {
+				color: white;
+				font-size: 14px;
+				font-weight: 600;
+			}
+
+
+			.profile-details {
+				height: 85px;
+				p {
+					margin: 0
+				}
+				padding-left: 100px;
+				padding-right: 0px;
+
+				.profile-name {
+					margin: 0;
+					color: rgba(white, 1);
+					font-size: 20px;
+					font-weight: 400;
+					// line-height: 18px;
+				}
+				.profile-about, .profile-username {
+					color: rgba(white, .75)
+				}
+				.profile-about {
+					&:before {
+						display: inline-block;
+						margin-right: 4px;
+						font-size: 16px;
+					}
+				}
+
+				.profile-btn {
+					margin-top: 6px;
+					min-height: auto;
+					font-size: 14px;
+					line-height: 20px;
+					&:before {
+						font-size: 18px;
+						line-height: 20px;
+						padding-right: .3em;
+					}
+				}
+				
+			}
+
+		}
+		.sub-infos {
+			display: -webkit-flex;
+  			display: flex;
+  			margin: 0 -16px;
+			.sub-info {
+				-webkit-flex: 1;
+          		flex: 1;
+          		text-align: center;
+          		color: white;
+          		padding: 6px 0;
+          		border-left: 1px solid rgba(white, .5);
+          		&:first-child {
+          			border-width: 0px;
+          		}
+          		.sub-info-title {
+					opacity: .6;
+          		}
+          		.sub-info-content {
+          			
+          		}
+			}
+		}
+
+
+		.profile-banner {
+			z-index: -1;
+			position: absolute;
+			top: -2%;
+			left: -2%;
+			width: 104%;
+			height: 104%;
+		}
+	}
 
 	.profile-tabs {
 		position: relative;
@@ -194,8 +311,20 @@ ion-content.scroll-content {
 	}
 
 	.section {
-		margin-top: 20px;
-		margin-bottom: 20px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		&:last-child {
+			margin-bottom: 20px;
+		}
+	}
+
+	.item-header {
+		padding-top: 0;
+		padding-bottom: 0;
+		line-height: 50px;
+		.icon:before {
+			color: rgba(64,192,227,1);
+		}
 	}
 }
 
@@ -245,6 +374,7 @@ ion-content.scroll-content {
 
 	.article-content {
 		opacity: .8;
+		padding-bottom: 40px;
 	}
 }
 
@@ -307,3 +437,215 @@ ng-include .list:last-child.card { // solve ng-include style bug
 ion-content.has-slide-box > .scroll {
 	height: 100%;
 }
+
+
+
+// ------------------------
+// Application
+// ------------------------
+.tabbed-slidebox .slider-slide {
+	text-align: left;
+}
+
+.no-notification {
+	text-align: center;
+	opacity: .3;
+	margin-top: 30px;
+	.no-msg-icon {
+		font-size: 80px;
+	}
+	h4 {
+		font-size: 18px;
+		font-weight: 200;
+	}
+}
+
+.application-container {
+	.banner-container {
+		position: relative;
+		width: 100%;
+		height: 200px;
+		background:  linear-gradient(0deg, rgba(255,255,255,0.2), rgba(255,255,255,0.2)), url('/img/airport.jpg') center center no-repeat;
+		background-size: cover;
+		
+		.goals {
+			width: 100%;
+			
+			h4 {
+				text-align: center;
+				color: white;
+				margin: 0;
+				margin-bottom: 14px; 
+			}
+			p {
+				text-align: center;
+				color: white;
+				padding: 0 20px;
+				font-weight: 400
+			}
+			button {
+				font-size: 14px;
+				width: 60%;
+				margin: 0 auto;
+				min-height: 34px;
+				line-height: 34px;
+				@include border-radius(30px);
+			}
+		}
+	}
+
+	.card {
+		img {
+			max-height: 90px;
+			max-width: 90px;
+			@include border-radius(5px);
+		}
+
+		.provider-info {
+			position: absolute;
+			top: 100px;
+			left: 10px;
+			width: 90px;
+			padding: 8px 0;
+			text-align: center;
+			h4 {
+				font-weight: 400;
+			}
+		}
+
+		.application-detail {
+			margin-bottom: 7px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+			h2 {
+				font-size: 12px;
+			}
+
+			p {
+				font-size: 11px;
+			}			
+		}
+
+		.application-badge {
+			position: absolute;
+			right: 0;
+			top: 0;
+			font-size: 8px;
+			background: #33cd5f;
+			color: white;
+			padding: 0px 6px;
+			font-weight: 600;
+			opacity: .8;
+		}
+
+	}
+}
+
+.application-detail-container {
+	position: relative;
+	.application-highlight {
+		position: relative;
+		padding: 20px 10px;
+		overflow: hidden;
+		// background-color: #46a3c2;
+		.application-info {
+			position: relative;
+			.application-provider {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 90px;
+				text-align: center;
+				.provider-avatar {
+					width: 100%;				
+					height: 90px;
+					// margin-top: 10px;
+					@include border-radius(5px);
+					border: 2px solid rgba(white, .9);
+				}
+				.detail-title {
+					color: white;
+					font-size: 12px;
+					margin-top: 10px;
+				}
+				.detail-content {
+					color: white;
+					font-size: 14px;
+					font-weight: 600;
+				}
+			}
+
+
+			.application-details {
+				p {
+					margin: 0
+				}
+				padding-left: 105px;
+				padding-right: 0px;
+				
+				.detail-title {
+					color: white;
+					font-size: 12px;
+					margin-top: 10px;
+					// margin-bottom: 4px;
+					&:first-child {
+						margin: 0;
+					}
+				}
+				.detail-content {
+					color: white;
+					font-size: 14px;
+					font-weight: 600;
+				}
+			}
+
+			.application-name {
+				margin: 10px 0;
+				color: rgba(white, 1);
+				font-size: 18px;
+				font-weight: 400;
+				line-height: 18px;
+			}
+			.application-about {
+				color: rgba(white, .5)
+			}
+			.application-btn {
+				min-height: auto;
+				font-size: 14px;
+				line-height: 28px;
+				&:before {
+					font-size: 18px;
+					line-height: 28px;
+					padding-right: .3em;
+				}
+			}
+		}
+		.application-banner {
+			z-index: -1;
+			position: absolute;
+			top: -2%;
+			left: -2%;
+			width: 104%;
+			height: 104%;
+		}
+	}	
+}
+
+.finish-btn {
+	color: #33cd5f;
+}
+
+.ongoing-btn {
+	// color: #33cd5f;
+}
+
+.disabled-item {
+	opacity: .3;
+}
+
+
+
+
+
+

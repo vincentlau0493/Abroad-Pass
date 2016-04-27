@@ -2,6 +2,7 @@
 	<ion-header-bar class="bar bar-header bar-light">
 		<button class="button button-clear button-primary" ng-click="previousStep()" ng-show="currentStep > 1">上一步</button>
 		<h1 class="title">四步完成留学意向</h1>
+		<button class="button button-clear button-primary" ng-click="close()" ng-show="hasCloseBtn">取消</button>
 	</ion-header-bar>
 	<ion-content>
 		<div class="animation-switch-container goals-container" ng-switch on="currentStep">

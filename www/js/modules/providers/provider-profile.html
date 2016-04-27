@@ -1,64 +1,95 @@
-<ion-view view-title="{{provider.name}}" hide-nav-bar="false" hide-tabs>
-	<ion-header-bar class="bar-positive">
+<ion-view view-title="{{provider.username}}" hide-nav-bar="false" hide-tabs>
+	<ion-header-bar class="bar-calm">
 	  <div class="buttons">
 	    <button class="button icon ion-ios-arrow-back" ng-click="$ionicGoBack()"></button>
 	  </div>
-	  <h1 class="title">{{provider.name}}</h1>
+	  <h1 class="title">{{provider.username}}</h1>
 	  <div class="buttons">
 	    <button class="button button-clear icon ion-ios-more"></button>
 	  </div>
 	</ion-header-bar>
 
   <ion-content class="profile-container" scroll="true">
-    <div class="profile-highlight">
-    	<div class="profile-banner full-bg blur-bg" style="background: linear-gradient(0deg, rgba(2,173,231,0.5), rgba(2,173,231,0.5)), url('{{provider.avatar}}')"></div>
-    	<div class="profile-info">
-    		<img class="profile-avatar" src="{{provider.avatar}}">
-    		<h3 class="profile-name">{{provider.name}}</h3>
-    		<p class="profile-about">{{provider.lastText}}</p>
-    		<button class="button icon-left ion-calendar button-energized button-outline profile-btn"
-    			ng-click="openApplicationModal()">Ask For Application</button>
-    	</div><!-- info -->
-    </div><!-- highlight -->
+  	<ion-spinner icon="spiral" style="margin-top: 20px;"></ion-spinner>
+		<div class="post-loading">
+			<div class="profile-highlight">
+				<div class="profile-banner full-bg blur-bg" style="background: linear-gradient(0deg, rgba(64,192,227,0.8), rgba(64,192,227,0.8)), url('{{provider.no_avatar ? 'img/default_banner.png' : provider.avatar}}')"></div>
+				<div class="profile-info">
+					<img class="profile-avatar" src="{{provider.avatar ? provider.avatar : 'img/default_avatar.jpg'}}">
+					<div class="profile-details">
+						<p class="profile-meta profile-name">{{provider.username}}</p>
+						<p class="profile-meta profile-username">@ username</p>
+						<p class="profile-meta profile-about ion-ios-location icon">{{provider.lastText}}</p>
+						<button class="button icon-left ion-chatbox-working button-energized button-outline profile-btn">和我交流</button>						
+					</div>
+				</div><!-- info -->
+				<div class="sub-infos">
+					<div class="sub-info">
+						<div class="sub-info-title">完成的案例</div>
+						<div class="sub-info-content">56</div>
+					</div>
+					<div class="sub-info">
+						<div class="sub-info-title">关注他的人</div>
+						<div class="sub-info-content">188</div>
+					</div>
+					<div class="sub-info">
+						<div class="sub-info-title">成功率</div>
+						<div class="sub-info-content">100%</div>
+					</div>
+				</div>
 
-		
-	<article class="list card section">
-		<h2 class="item item-divider item-dark">Basic Info</h2>
-	  <div class="item item-text-wrap">
-	  	<h2>Title here</h2>
-	    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos ut eveniet minus quo eligendi, atque maxime officia, explicabo architecto non magnam repellendus optio quae est repudiandae tenetur praesentium amet, ipsa.</p>
-	  </div>
-	  <div class="item item-divider item-light">
-	    See More Detail
-	  </div>
-	</article>
+			</div><!-- highlight -->
 
-	<article class="list card section">
-		<h2 class="item item-divider item-dark">About Provider</h2>
-	  <div class="item item-text-wrap">
-	  	<h2>Title here</h2>
-	    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos ut eveniet minus quo eligendi, atque maxime officia, explicabo architecto non magnam repellendus optio quae est repudiandae tenetur praesentium amet, ipsa.</p>
-	  </div>
-	  <div class="item item-divider item-light">
-	    See More Detail
-	  </div>
-	</article>
+				
+			<article class="list card section">
+				<h2 class="item item-divider item-light item-header item-icon-left">
+					<i class="icon ion-university"></i>
+					关于provider
+				</h2>
+			  <div class="item item-text-wrap">
+			  	<h2>Title here</h2>
+			    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos ut eveniet minus quo eligendi, atque maxime officia, explicabo architecto non magnam repellendus optio quae est repudiandae tenetur praesentium amet, ipsa.</p>
+			  </div>
+			  <a class="item item-divider item-light item-icon-right">
+			    更多信息
+			    <i class="icon ion-ios-arrow-right"></i>
+			  </a>
+			</article>
 
-	<article class="list card section">
-		<h2 class="item item-divider item-dark">Other Comments</h2>
-	  <div class="item item-text-wrap">
-	  	<h2>Title here</h2>
-	    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos ut eveniet minus quo eligendi, atque maxime officia, explicabo architecto non magnam repellendus optio quae est repudiandae tenetur praesentium amet, ipsa.</p>
-	  </div>
-	  <div class="item item-divider item-light">
-	    See More Detail
-	  </div>
-	</article>
+			<article class="list card section">
+				<h2 class="item item-divider item-light item-header item-icon-left">
+					<i class="icon ion-filing"></i>
+					发表过的文章
+				</h2>
+			  <div class="item item-text-wrap">
+			  	<h2>Title here</h2>
+			    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos ut eveniet minus quo eligendi, atque maxime officia, explicabo architecto non magnam repellendus optio quae est repudiandae tenetur praesentium amet, ipsa.</p>
+			  </div>
+			  <a class="item item-divider item-light item-icon-right">
+			    更多信息
+			    <i class="icon ion-ios-arrow-right"></i>
+			  </a>
+			</article>
 
+			<article class="list card section">
+				<h2 class="item item-divider item-light item-header item-icon-left">
+					<i class="icon ion-ios-pulse-strong"></i>
+					留学者评价
+				</h2>
+			  <div class="item item-text-wrap">
+			  	<h2>Title here</h2>
+			    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos ut eveniet minus quo eligendi, atque maxime officia, explicabo architecto non magnam repellendus optio quae est repudiandae tenetur praesentium amet, ipsa.</p>
+			  </div>
+			  <a class="item item-divider item-light item-icon-right">
+			    更多信息
+			    <i class="icon ion-ios-arrow-right"></i>
+			  </a>
+			</article>
+		</div><!-- post-loading -->
   </ion-content><!-- container -->
 
   <ion-footer-bar class="sticky-footer">
-		<button  class="button button-full button-positive">Chat With Me</button>
+		<button  class="button button-full button-positive" ng-click="openApplicationModal()">向我发布申请请求</button>
 	</ion-footer-bar>
 </ion-view>
 
@@ -74,6 +105,11 @@
     	<p>
     		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto consequuntur atque ipsam odio quaerat error placeat ut quia, minima commodi ea expedita deleniti explicabo nemo, aperiam deserunt eaque. Vero, voluptates!
     	</p>
+			<ion-list>
+				<ion-checkbox ng-checked="true" ng-model="filter.blue">简历</ion-checkbox>
+				<ion-checkbox ng-checked="true" ng-model="filter.yellow">文书</ion-checkbox>
+				<ion-checkbox ng-checked="true" ng-model="filter.pink">签证</ion-checkbox>
+			</ion-list>
     	<button class="button button-full button-positive" ng-click="sendOutRequest()">确定</button>
     </ion-content>
   </ion-modal-view>

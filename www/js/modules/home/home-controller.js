@@ -15,8 +15,10 @@ function HomeCtrl($scope, $ionicActionSheet, ProvidersService, ArticlesService, 
   
   ArticlesService.all().then(function(articles) {
     $scope.articles = articles;
+  }).finally(function(){
     LoadingService.hide(true);
   })
+
 
   ProvidersService.getRecommendedProviders()
     .then(function(providers){
@@ -28,7 +30,6 @@ function HomeCtrl($scope, $ionicActionSheet, ProvidersService, ArticlesService, 
         idx = (idx + 1) % pLen;
         $scope.provider = providers[idx];
       }
-
     })
 
 

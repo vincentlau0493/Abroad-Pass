@@ -1,3 +1,6 @@
+// @Deprecated
+
+
 function UsersService($http, $q, config) {
   // Might use a resource here that returns a JSON array
 

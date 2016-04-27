@@ -5,6 +5,7 @@
     "ionic": "driftyco/ionic-bower#1.2.4"
   },
   "dependencies": {
-    "ion-affix": "^1.0.1"
+    "ion-affix": "^1.0.1",
+    "moment": "^2.8.1"
   }
 }

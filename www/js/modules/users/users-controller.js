@@ -1,4 +1,4 @@
-function UsersCtrl($scope, $state, $ionicModal, LoadingService, UsersService) {
+function UsersCtrl($scope, $state, $ionicModal, LoadingService, AuthenticateService) {
   
   $scope.form = {
     SIGN_IN: {
@@ -11,8 +11,8 @@ function UsersCtrl($scope, $state, $ionicModal, LoadingService, UsersService) {
     },    
   }
 
-  // window.u = UsersService;
-  // UsersService.login();
+  // window.u = AuthenticateService;
+  // AuthenticateService.login();
 
 
   $scope.fadeOut = function($event) {
@@ -59,7 +59,29 @@ function UsersCtrl($scope, $state, $ionicModal, LoadingService, UsersService) {
    * @param  {Object} user
    */
   $scope.signIn = function(user) {
+    // form validation...
+
+
+    LoadingService.show();
+
     console.log('Sign-In', user);
+    AuthenticateService.login(user).then(function(d){
+      console.log(d);
+      var data = d.data;
+      
+      // set api key
+      AuthenticateService.setKey(data.api);
+
+      var url = '#/tab/home';
+      $state.go('tab.home');
+      $scope.userFormModal.hide();
+
+    }, function(d){
+      console.log(d);
+
+    }).finally(function(){
+      LoadingService.hide();
+    });
     // $state.go('tab.dash');
   }
 
@@ -141,4 +163,4 @@ function fillInGoals($scope, promise, $state) {
 
 }
 
-module.exports = ['$scope', '$state', '$ionicModal', 'LoadingService', 'UsersService', UsersCtrl];
+module.exports = ['$scope', '$state', '$ionicModal', 'LoadingService', 'AuthenticateService', UsersCtrl];
