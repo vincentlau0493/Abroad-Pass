@@ -42,3 +42,16 @@
 .sub-content {
 	color: #666;
 }
+
+.has-error {
+	color: $danger-color;
+}
+
+.has-success {
+	color: $success-color;
+}
+
+.has-stable {
+	color: $stable-color;
+}
+

@@ -21,58 +21,99 @@
 
 <!-- sign-in.html template -->
 <script type="text/ng-template" id="sign-in.html">
-	<div class="list list-inset">
-		<label class="item item-input">
-			<span class="input-label">用户名</span>
-			<input type="text" ng-model="user.username" placeholder="可以是注册邮箱">
-		</label>
-		<label class="item item-input">
-			<span class="input-label">密码</span>
-			<input type="password" ng-model="user.password" placeholder="您的密码">
-		</label>
-	</div>
-	<div class="padding">
-		<button class="button button-block button-positive" ng-click="signIn(user)">
-			登录
-		</button>
-		<p class="text-center">
-			<a href="#/forgot-password">忘记密码？</a>
-		</p>
-	</div>
+	<form name="signInForm">
+		<div class="list list-inset">
+			<label class="item item-input">	
+				<span class="input-label">用户名</span>
+				<input type="text" ng-model="user.username" name="name" placeholder="可以是注册邮箱" required>
+			</label>
+			<label class="item item-input">
+				<span class="input-label">密码</span>
+				<input type="password" ng-model="user.password" placeholder="您的密码">
+			</label>
+			<p ng-show="signInForm.name.$invalid && !signInForm.name.$pristine" class="help-block has-error">
+				用户名没有填写
+			</p>
+		</div>
+		<div class="padding">
+			<button class="button button-block button-positive" ng-disabled="signInForm.$invalid" ng-click="signIn(user)">
+				登录
+			</button>
+			<p class="text-center">
+				<a href="#/forgot-password">忘记密码？</a>
+			</p>
+		</div>
+	</form>
 </script>
 
 
 <!-- sign-up.html template -->
 <script type="text/ng-template" id="sign-up.html">
-	<div class="list list-inset sign-up-form">
-		<label class="item item-input">
-			<span class="input-label">用户名</span>
-			<input type="text" ng-model="user.username">
-		</label>
-		<label class="item item-input">
-			<span class="input-label">密码</span>
-			<input type="password" ng-model="user.password">
-		</label>
-		<label class="item item-input">
-			<span class="input-label">密码确认</span>
-			<input type="password" ng-model="user.passwordConfirm">
-		</label>
-		<ion-list>
-			<ion-checkbox ng-model="user.isProvider">想注册成为provider</ion-checkbox>
-		</ion-list>
-	</div>
-	<div class="padding sign-up-buttons">
-		<button class="button button-block button-positive" ng-click="signUp(user)">
-			{{user.isProvider ? "下一步" : "注册"}}
-		</button>
-<!-- 		<button ng-show="user.isProvider" class="button button-block button-positive" ng-click="NextStepForProvider(user)">
-			下一步
-		</button> -->
-		<p class="text-center">
-		<a href="" ng-click="changeMode('SIGN_IN')">《免责协议》</a>
-		</p>
-	</div>
+	<form name="signUpForm">
+		<div class="list list-inset sign-up-form">
+			<label class="item item-input" style="position: relative">
+				<span class="input-label">用户名</span>
+				<input type="text" ng-model="user.username" name="name" username required
+					   ng-minlength="3" ng-maxlength="20">
+				<i class="icon ion-checkmark form-icon has-success"
+					ng-show="!signUpForm.name.$invalid 
+							&& !signUpForm.name.$pristine 
+							&& !signUpForm.name.$pending.username"></i>
+				<i class="icon ion-alert form-icon has-error"
+					ng-show="signUpForm.name.$error.username 
+							 || (signUpForm.name.$invalid && !signUpForm.name.$pristine)"></i>
+			</label>
+			<label class="item item-input">
+				<span class="input-label">密码</span>
+				<input type="password" ng-model="user.password" name="password" 
+					   ng-minlength="8" ng-maxlength="20" 
+					   ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required>
+				<i class="icon ion-checkmark form-icon has-success"
+					ng-show="!signUpForm.password.$invalid 
+							&& !signUpForm.password.$pristine"></i>
+				<i class="icon ion-alert form-icon has-error"
+					ng-show="signUpForm.password.$invalid && !signUpForm.password.$pristine"></i>
+			</label>
+			<label class="item item-input">
+				<span class="input-label">密码确认</span>
+				<input type="password" ng-model="user.passwordConfirm" name="passwordConfirm" confirm-password required>
+				<i class="icon ion-checkmark form-icon has-success"
+					ng-show="!signUpForm.passwordConfirm.$invalid 
+							&& !signUpForm.passwordConfirm.$pristine"></i>
+				<i class="icon ion-alert form-icon has-error"
+					ng-show="signUpForm.passwordConfirm.$invalid && !signUpForm.passwordConfirm.$pristine"></i>
+			</label>
+			<ion-list>
+				<ion-checkbox ng-model="user.isProvider">想注册成为provider</ion-checkbox>
+			</ion-list>
 
+			<!-- username error msg -->
+			<p class="help-block has-stable" ng-show="signUpForm.name.$pending.username">Checking if this name is available...</p>
+			<p class="help-block has-error" ng-show="signUpForm.name.$error.username">This username is already taken!</p>
+	    	<p class="help-block has-error" ng-show="!signUpForm.name.$error.required && (signUpForm.name.$error.minlength || signUpForm.name.$error.maxlength) && signUpForm.name.$dirty">Username must be between 3 and 20 characters.</p>
+			
+			<!-- password error msg -->
+			<p class="help-block has-error" ng-show="!signUpForm.password.$error.required && (signUpForm.password.$error.minlength || signUpForm.password.$error.maxlength) && signUpForm.password.$dirty">Password must be between 8 and 20 characters.</p>
+			<p class="help-block has-error" ng-show="!signUpForm.password.$error.required && !signUpForm.password.$error.minlength && !signUpForm.password.$error.maxlength && signUpForm.password.$error.pattern && signUpForm.password.$dirty">Must contain one lower &amp; uppercase letter, and one non-alpha character</p>
+			<!-- password confirm error msg -->
+			<p class="help-block has-error" ng-show="!signUpForm.passwordConfirm.$error.required && signUpForm.passwordConfirm.$error.noMatch && signUpForm.password.$dirty">Passwords do not match.</p>
+
+		</div>
+
+		<div class="padding sign-up-buttons">
+			<button class="button button-block button-positive" 
+				ng-disabled="signUpForm.$invalid 
+							 || signUpForm.name.$pending.username" ng-click="signUp(user)">
+				{{user.isProvider ? "下一步" : "注册"}}
+			</button>
+	<!-- 		<button ng-show="user.isProvider" class="button button-block button-positive" ng-click="NextStepForProvider(user)">
+				下一步
+			</button> -->
+			<p class="text-center">
+			<a href="" ng-click="changeMode('SIGN_IN')">《免责协议》</a>
+			</p>
+		</div>
+	</form>
 	<div class="padding" ng-show="user.isProvider">
 	    <p class="sub-content">
 			注意：成为provider前还需填写下一步的所有资料，我们会在48小时能审核您的材料。感谢加入留洋通！

@@ -200,6 +200,46 @@ app
     }
 })
 
+// Form Validation
+.directive("username", ['AuthenticateService', '$q', function(AuthenticateService, $q) {
+	return {
+		require: 'ngModel',
+		link: function(scope, elm, attrs, ctrl) {
+			
+			ctrl.$asyncValidators.username = function(modelValue, viewValue) {
+
+				// var errors = Object.keys(ctrl.$error).length;
+				// if (errors)
+				// 	return false;
+
+				if (ctrl.$isEmpty(modelValue)) {
+					// consider empty model valid
+					return $q.when();
+				}
+
+				return AuthenticateService.usernameHasTaken(modelValue);
+			};
+		}
+	}
+}])
+
+.directive('confirmPassword', function () {
+    return {
+      require: 'ngModel',
+      link: function (scope, elm, attrs, ctrl) {
+
+	      ctrl.$parsers.unshift(function (viewValue, $scope) {
+	        var noMatch = viewValue != scope.signUpForm.password.$viewValue
+	        ctrl.$setValidity('noMatch', !noMatch);
+
+	        return false;
+	      })
+      }
+    }
+})
+
+
+
 
 
 function SimplePubSub() {

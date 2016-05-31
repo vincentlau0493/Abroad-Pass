@@ -20,7 +20,9 @@ function Config() {
 		this.url = [this.domain, this.prefix].join('/');		
 	}
 
-
+	// should be set after login and should always keep
+	this.apiKey = null;
+	this.username = null;
 
 }
 

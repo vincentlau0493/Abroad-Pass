@@ -106,11 +106,11 @@
     		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto consequuntur atque ipsam odio quaerat error placeat ut quia, minima commodi ea expedita deleniti explicabo nemo, aperiam deserunt eaque. Vero, voluptates!
     	</p>
 			<ion-list>
-				<ion-checkbox ng-checked="true" ng-model="filter.blue">简历</ion-checkbox>
-				<ion-checkbox ng-checked="true" ng-model="filter.yellow">文书</ion-checkbox>
-				<ion-checkbox ng-checked="true" ng-model="filter.pink">签证</ion-checkbox>
+				<ion-checkbox ng-repeat="service in services" ng-checked="service.checked" ng-model="service.checked" ng-change="servicesCheckCount()">
+					{{service.text}}
+				</ion-checkbox>
 			</ion-list>
-    	<button class="button button-full button-positive" ng-click="sendOutRequest()">确定</button>
+    	<button class="button button-full button-positive" ng-click="sendOutRequest()" ng-disabled="servicesCount == 0">确定</button>
     </ion-content>
   </ion-modal-view>
 </script>

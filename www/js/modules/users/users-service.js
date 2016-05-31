@@ -1,4 +1,5 @@
 // @Deprecated
+// see anthenticateService
 
 
 function UsersService($http, $q, config) {

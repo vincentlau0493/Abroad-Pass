@@ -1,4 +1,4 @@
-function AuthenticateService($http, $q, config, UrlService) {
+function AuthenticateService($http, $q, config, $timeout, UrlService) {
   // Might use a resource here that returns a JSON array
 
   // function getRequestUrl(action) {
@@ -36,12 +36,33 @@ function AuthenticateService($http, $q, config, UrlService) {
 		return $http(req);
   }
 
-  Service.prototype.setKey = function(key) {
+  Service.prototype.setKeyAndUsername = function(key, username) {
   	this.apiKey = key;
+    this.username = username;
+    UrlService.injectKeyAndUsername(key, username);
   }
 
   Service.prototype.valid = function() {
-  	return this.apiKey != null;
+  	return this.apiKey != null && this.username != null;
+  }
+
+  Service.prototype.usernameHasTaken = function(name) {
+    // fake
+    var usernames = ['Jim', 'John', 'Jill', 'liujiayu'];
+    var def = $q.defer();
+
+    $timeout(function() {
+      // Mock a delayed response
+      if (usernames.indexOf(name) === -1) {
+        // The username is available
+        def.resolve();
+      } else {
+        def.reject();
+      }
+
+    }, 2000);
+
+    return def.promise;
   }
 
 

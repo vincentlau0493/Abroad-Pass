@@ -41,6 +41,7 @@ require('./directives/directives');
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', [
   'ionic', 
+  'ngStorage',
   'globals',
   'account',
   'applications',

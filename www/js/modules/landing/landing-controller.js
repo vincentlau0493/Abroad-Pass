@@ -1,4 +1,6 @@
-function LandingCtrl($scope, $ionicModal, LoadingService) {
+// @deprecated, using userCtrl
+
+function LandingCtrl($scope, $ionicModal, LoadingService, AuthenticateService) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -38,4 +40,4 @@ function LandingCtrl($scope, $ionicModal, LoadingService) {
 }
 
 
-module.exports = ['$scope', '$ionicModal', 'LoadingService', LandingCtrl];
+module.exports = ['$scope', '$ionicModal', 'LoadingService', 'AuthenticateService', LandingCtrl];

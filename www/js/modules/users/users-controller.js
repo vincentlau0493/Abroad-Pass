@@ -18,6 +18,9 @@ function UsersCtrl($scope, $state, $ionicModal, LoadingService, AuthenticateServ
   $scope.fadeOut = function($event) {
     $event.preventDefault();
     var ele = $event.currentTarget;
+    // set temp api key
+    
+    // AuthenticateService.setKeyAndUsername(123, 'liujiayu');
     LoadingService.fadeOutBeforeRedirect(ele);
   }
 
@@ -36,6 +39,7 @@ function UsersCtrl($scope, $state, $ionicModal, LoadingService, AuthenticateServ
   };
   $scope.closeUserFormModal = function() {
     $scope.userFormModal.hide();
+
   };
 
 	/**
@@ -69,8 +73,8 @@ function UsersCtrl($scope, $state, $ionicModal, LoadingService, AuthenticateServ
       console.log(d);
       var data = d.data;
       
-      // set api key
-      AuthenticateService.setKey(data.api);
+      // set api key and username
+      AuthenticateService.setKeyAndUsername(data.api, user.username); // should return username
 
       var url = '#/tab/home';
       $state.go('tab.home');

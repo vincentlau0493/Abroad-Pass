@@ -1,22 +1,54 @@
-function UrlService($http, $q, config) {
+function UrlService($http, $q, config, $localStorage) {
 
   var dev = config.isDev;
 
+  var tokens = {}; // api key and username
   function Service() {
   	var self = this;
+    console.log($localStorage)
+    self.apiKey = null;
+    self.username = null;
+    self.token = null;
+
+    if ($localStorage.apiKey && $localStorage.username) {
+      console.log('has api key and username');
+      self.apiKey = $localStorage.apiKey;
+      self.username = $localStorage.username;
+      tokens = {
+        api_key: self.apiKey,
+        username: self.username
+      }
+    }
+
   }
+
+  Service.prototype.injectKeyAndUsername = function(key, username) {
+    this.apiKey = key;
+    this.username = username;
+    // global
+    tokens = {
+      api_key: key,
+      username: username
+    }
+    console.log('inject key and username');
+    // local storage
+    $localStorage.apiKey = key;
+    $localStorage.username = username;
+  }
+
 
   var basicBuilder = getUrlBuilder(config.url);
   var basicGetBuilder = getUrlBuilder(config.url).setParam('format', 'json');
 
   var modules = {};
-  modules.article = getArticleModlue(dev);
-  modules.authenticate = getAuthenticateModule(dev);
-  modules.provider = getProviderModule(dev);
+  modules.article = getArticleModlue;
+  modules.authenticate = getAuthenticateModule;
+  modules.provider = getProviderModule;
+  modules.application = getApplicationModule;
 
 
   Service.prototype.getModuleUrl = function(module) {
-    return modules[module];
+    return modules[module](dev);
   };
 
   // authenticate
@@ -41,7 +73,7 @@ function UrlService($http, $q, config) {
 
   // article
   function getArticleModlue(isDev) {
-    var builder = getUrlBuilder(basicBuilder).addPath('article');
+    var builder = getUrlBuilder(basicBuilder).addPath('article').setParam(tokens);
     // product module
     var module = {
       getBriefArticles: function() {
@@ -75,6 +107,7 @@ function UrlService($http, $q, config) {
 
     var obj = isDev ? moduleForDev : module;
     obj.isDev = isDev;
+    // return obj;
     return obj;
   }
 
@@ -82,28 +115,69 @@ function UrlService($http, $q, config) {
   // provider
   // 带上api_key和username
   function getProviderModule(isDev) {
-
-    var builder = getUrlBuilder(basicBuilder).addPath('provider');
+    var builder = getUrlBuilder(basicBuilder).addPath('provider').setParam(tokens);
     // product module
     var module = {
+      // @deprecated
+      // getProviderById: function(id) {
+      //   var providerBuilder = getUrlBuilder(builder)
+      //       .addPath(id).setParam('format', 'json');
+      //   return providerBuilder.toString();
+      // },
       getProviderById: function(id) {
         var providerBuilder = getUrlBuilder(builder)
-            .addPath(id).setParam('format', 'json');
+            .addPath('show_provider').setParam('pid', id).setParam('format', 'json');
         return providerBuilder.toString();
+      },
+
+      postApplicationRequest: function() {
+        var applyBuilder = getUrlBuilder(basicBuilder)
+          .addPath('application').addPath('generate').setParam(tokens);
+        return applyBuilder.toString();
       }
+
     }
 
     // development module
     var moduleForDev = {
       getProviderById: function(id) {
         
-      }
+      },
+      postApplicationRequest: function() {
+        return '';
+      }      
 
     }
 
     var obj = isDev ? moduleForDev : module;
     obj.isDev = isDev;
     return obj;
+  }
+
+
+  // application
+  function getApplicationModule(isDev) {
+
+    var builder = getUrlBuilder(basicBuilder).addPath('application').setParam(tokens);
+    // product module
+    var module = {
+      getApplications: function() {
+        var applicationBuilder = getUrlBuilder(builder).setParam('format', 'json');
+        return applicationBuilder.toString();
+      },
+
+      getAppStatusById: function(id) {
+        var applicationBuilder = getUrlBuilder(builder)
+            .addPath('get_status').setParam('appid', id).setParam('format', 'json');
+        return applicationBuilder.toString();
+      },
+
+      postUpdateAppStatus: function() {
+        var applicationBuilder = getUrlBuilder(builder).addPath('edit_status');
+        return applicationBuilder.toString();
+      },
+    }
+
 
   }
 
@@ -111,6 +185,7 @@ function UrlService($http, $q, config) {
 
   return new Service();
 }
+
 
 
 

@@ -13,7 +13,7 @@ function Router($stateProvider, $urlRouterProvider, $httpProvider) {
   .state('landing', {
     url: '/landing-page',
     templateUrl: templatePath + 'landing/landing-page.html',
-    controller: 'UsersCtrl'     
+    controller: 'UsersCtrl'
   }) 
 
   .state('goal', {

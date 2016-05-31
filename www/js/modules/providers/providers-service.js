@@ -4,6 +4,8 @@ function ProvidersService($http, $q, UrlService) {
   var requestUrl = UrlService.getModuleUrl('provider');
   var isDev = requestUrl.isDev;
 
+  console.log(requestUrl.getProviderById(1));
+
 
   function Service() {
     this.providers = null;
@@ -93,6 +95,29 @@ function ProvidersService($http, $q, UrlService) {
     //    Now return the promise.
     return deferred.promise;
   }
+
+
+  Service.prototype.askForApplication = function(data) {
+    // var data1 = {providerId:11}
+    var url = requestUrl.postApplicationRequest();
+
+    // force pid
+    data.providerId = 12;
+    console.log(data);
+
+    var req = {
+      method: 'post',
+      url: url,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: data
+    }
+
+    return $http(req);
+  }
+
+
 
   return new Service();
 }
